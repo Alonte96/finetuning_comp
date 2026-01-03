@@ -173,3 +173,5 @@ def test_compression_ratio_reporting():
     assert 1.0 < ratio < 2.5
     # TinyLlama gate_proj: 5632x2048 -> big win.
     assert proj.compression_ratio((5632, 2048)) > 10
+
+# Refined
