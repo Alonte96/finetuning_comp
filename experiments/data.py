@@ -143,3 +143,5 @@ def load_synthetic(*, vocab: int, seq_len: int, eval_examples: int, seed: int,
                    collate_fn=collate, drop_last=True),
         DataLoader(eval_set, batch_size=micro_batch, shuffle=False, collate_fn=collate),
     )
+
+# Refined
