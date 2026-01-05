@@ -58,13 +58,14 @@ class RunConfig:
     galore_project_embeddings: bool = False
 
     # ---- bookkeeping ----
-    preset: str | None = None
+    preset: str | None = "auto"           # auto | 16gb | 24gb | 40gb | 80gb
+    phase: str = "final"                  # mem | sweep | final | accum; fairness is checked within a phase
     run_name: str = ""
     out_dir: str = str(RESULTS_DIR)
     save_model: bool = False              # benchmark runs don't need checkpoints
     eval_every: int = 100
     log_every: int = 10
-    smoke: bool = False                   # tiny random model + synthetic data, no network
+#     smoke: bool = False                   # tiny random model + synthetic data, no network
 
     FAIRNESS_FIELDS = (
         "model_id", "dataset_id", "seq_len", "micro_batch", "grad_accum",
@@ -83,7 +84,13 @@ class RunConfig:
         return dataclasses.asdict(self)
 
     @classmethod
-    def from_args(cls, argv: list[str] | None = None) -> "RunConfig":
+    def build_parser(cls, suppress_defaults: bool = False) -> argparse.ArgumentParser:
+        """The CLI for every experiment script.
+
+        ``suppress_defaults`` yields a parser that records ONLY the flags the
+        caller actually typed, which is how a preset knows not to overwrite an
+        explicitly-passed --seq-len.
+        """
         parser = argparse.ArgumentParser(description="GaLore vs LoRA vs full FT")
         for f in dataclasses.fields(cls):
             if f.name == "run_name":
@@ -91,28 +98,81 @@ class RunConfig:
             else:
                 default = f.default if f.default is not dataclasses.MISSING else None
             arg = f"--{f.name.replace('_', '-')}"
+            kwargs = {"default": argparse.SUPPRESS if suppress_defaults else default}
             if f.type == "bool" or isinstance(default, bool):
-                parser.add_argument(arg, type=lambda v: v.lower() in ("1", "true", "yes"),
-                                    default=default)
-            elif f.name == "preset":
-                parser.add_argument(arg, type=str, default=None)
+                kwargs["type"] = lambda v: v.lower() in ("1", "true", "yes")
+            elif f.name in ("preset", "run_name"):
+                kwargs["type"] = str
             else:
-                parser.add_argument(arg, type=type(default) if default is not None else str,
-                                    default=default)
-        args = parser.parse_args(argv)
+                kwargs["type"] = type(default) if default is not None else str
+            parser.add_argument(arg, **kwargs)
+        return parser
+
+    @classmethod
+    def from_args(cls, argv: list[str] | None = None) -> "RunConfig":
+        args = cls.build_parser().parse_args(argv)
         cfg = cls(**vars(args))
 
-        if cfg.preset:
-            from gradproj.presets import select_preset
-            p = select_preset(cfg.preset)
-            cfg.seq_len, cfg.micro_batch = p.seq_len, p.micro_batch
-            cfg.grad_accum, cfg.grad_checkpointing = p.grad_accum, p.grad_checkpointing
+        explicit = set(vars(cls.build_parser(suppress_defaults=True).parse_args(argv)))
+        cfg._apply_preset(explicit)
 
         if cfg.method not in ("full", "lora", "galore"):
             raise SystemExit(f"--method must be full|lora|galore, got {cfg.method}")
+        if cfg.phase not in ("mem", "sweep", "final", "accum"):
+            raise SystemExit(f"--phase must be mem|sweep|final|accum, got {cfg.phase}")
         # GaLore layerwise + accumulation is supported (low-rank accumulators are
         # exact); no restriction needed here.
         return cfg
+
+    def _apply_preset(self, explicit: set[str]) -> None:
+        """Resolve --preset, never clobbering a knob the caller set by hand."""
+        if not self.preset:
+            return
+
+        from gradproj.presets import PRESETS, detect_gpu_gib, select_preset
+
+        if self.preset == "auto":
+            if detect_gpu_gib() is None:
+                # CPU/MPS: the built-in defaults are already the honest choice,
+                # and no preset can make a laptop measurement mean VRAM.
+                self.preset = None
+                return
+            p = select_preset(None)
+            print(f"[preset] auto-detected {detect_gpu_gib():.0f} GiB card -> '{p.name}' tier")
+        elif self.preset in PRESETS:
+            p = select_preset(self.preset)
+        else:
+            raise SystemExit(
+                f"--preset must be auto|{'|'.join(sorted(PRESETS))}, got {self.preset!r}"
+            )
+
+        for field_name in ("seq_len", "micro_batch", "grad_accum", "grad_checkpointing"):
+            if field_name not in explicit:
+                setattr(self, field_name, getattr(p, field_name))
+        self.preset = p.name
+
+
+def reject_reserved_flags(passthrough: list[str], reserved: tuple[str, ...], driver: str) -> None:
+    """Refuse passthrough flags that the driver sets per run itself.
+
+    Matching on raw tokens is not enough: ``--lr=1e-4`` and argparse's prefix
+    abbreviations (``--max-step``, ``--run-nam``) both slip past a substring
+    check, land AFTER the driver's own flag, and win on argparse's last-wins
+    rule. So we let argparse itself normalise the flags and compare *dests* --
+    the only spelling-proof way to ask "did the caller set this?".
+
+    The failure this prevents is silent and expensive: a sweep whose nine
+    candidates all train at one learning rate still prints a "winner", and that
+    winner then drives hours of full runs.
+    """
+    seen = vars(RunConfig.build_parser(suppress_defaults=True).parse_args(passthrough))
+    clashes = sorted(set(seen) & set(reserved))
+    if clashes:
+        raise SystemExit(
+            f"{driver} sets {', '.join('--' + c.replace('_', '-') for c in clashes)} "
+            f"per run; passing it here would apply one value to every run and "
+            f"silently invalidate the comparison. Remove it."
+        )
 
 
 def append_jsonl(path: Path, record: dict) -> None:

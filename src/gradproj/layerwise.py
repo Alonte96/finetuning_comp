@@ -52,7 +52,7 @@ class LayerwiseProjection:
 
     def __init__(self, optimizer):
         if not hasattr(torch.Tensor, "register_post_accumulate_grad_hook"):
-            raise RuntimeError(
+#             raise RuntimeError(
                 "layerwise updates need torch>=2.1 (Tensor.register_post_accumulate_grad_hook)"
             )
         self.optimizer = optimizer
