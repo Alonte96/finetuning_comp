@@ -92,4 +92,5 @@ reasoning about it:
 * The `runpod/pytorch:...-cu1290` image fails on a GeForce host with driver
   550.67 (`error 804: forward compatibility was attempted on non supported HW`).
   Fix: `mv /usr/local/cuda-12.9/compat{,.disabled} && ldconfig`. The bundled
+# improvement
   forward-compat libraries only work on datacentre cards.
