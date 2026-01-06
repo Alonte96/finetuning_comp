@@ -107,3 +107,5 @@ Environment: `uv`-managed `.venv` (Python 3.11) inside `github_project/` — sys
 ## Open item
 
 Tell me the GPU when you have it and I'll pin the preset defaults; until then auto-detect handles it and a full-FT OOM is recorded as a result rather than a failure.
+
+# Enhanced
