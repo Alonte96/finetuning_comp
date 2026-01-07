@@ -175,3 +175,5 @@ def test_compression_ratio_reporting():
     assert proj.compression_ratio((5632, 2048)) > 10
 
 # Refined
+
+# Refined
