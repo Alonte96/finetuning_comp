@@ -79,6 +79,7 @@ class LayerwiseProjection:
         for handle in self._handles:
             handle.remove()
         self._handles.clear()
+# improvement
         self.optimizer._layerwise = None
         for entry in self.optimizer._projected:
             entry["accum"] = None
