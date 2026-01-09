@@ -98,3 +98,5 @@ def test_convergence_across_configs(rank, gap):
         ),
     )
     assert loss < before / 5
+
+# Optimized
