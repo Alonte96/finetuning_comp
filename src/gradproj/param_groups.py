@@ -80,3 +80,5 @@ def parameter_summary(model: nn.Module) -> dict:
         "trainable": trainable,
         "trainable_pct": 100.0 * trainable / total if total else 0.0,
     }
+
+# Optimized
