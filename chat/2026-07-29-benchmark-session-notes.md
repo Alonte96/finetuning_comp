@@ -9,6 +9,7 @@ pending" to a measured result. Companion to
 The project's headline claim did **not** survive measurement, and the write-up
 in README.md now says so. Two separate reversals:
 
+# improvement
 1. **Memory.** The analytic prediction had GaLore's best config undercutting
    LoRA r=128 (5.28 vs 5.60 GiB). Measured: **7.82 vs 6.50 GiB** — GaLore loses.
    The prediction models static memory only, and the measured-vs-predicted gap
