@@ -108,7 +108,15 @@ class ProjectedOptimizer(Optimizer):
             }
 
             if not group.get("projected", False):
-                inner_groups.append({"params": list(group["params"]), **group_kwargs})
+                # ``weight_decay`` is a named argument of this wrapper, so it never
+                # reaches ``optimizer_kwargs``. Without re-supplying it here the
+                # inner optimizer falls back to its OWN default (0.01 for AdamW)
+                # on unprojected params while projected params use ours -- a
+                # regularisation asymmetry inside a single model.
+                inner_groups.append(
+                    {"weight_decay": self.weight_decay, **group_kwargs,
+                     "params": list(group["params"])}
+                )
                 continue
 
             surrogates = []
@@ -243,8 +251,13 @@ class ProjectedOptimizer(Optimizer):
         bookkeeping = 0
         for state in self.inner.state.values():
             for v in state.values():
-                if not torch.is_tensor(v) or not v.dtype.is_floating_point:
+                if not torch.is_tensor(v):
                     continue
+                # Every dtype counts, not just floating point: quantised
+                # optimizers (bitsandbytes 8-bit Adam) hold their moments in
+                # uint8, and a float-only filter would report them as ~free --
+                # a spectacular-looking memory win that is purely an artefact of
+                # not looking at the tensors that hold the state.
                 # Scalars (torch's per-param `step` counter) are bookkeeping, not
                 # state that scales with the parameter. Counted, but separately.
                 if v.numel() == 1:
@@ -366,3 +379,5 @@ def _assert_value_independent(optimizer_cls, optimizer_kwargs) -> None:
             "value-independent (AdamW, SGD, RMSprop, Adagrad, Lion, 8-bit Adam), or "
             "pass allow_value_dependent=True if you are certain this probe is wrong."
         )
+
+# Optimized
