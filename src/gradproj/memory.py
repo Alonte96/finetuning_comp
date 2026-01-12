@@ -353,3 +353,5 @@ def _print_prediction_table() -> None:
 
 if __name__ == "__main__":
     _print_prediction_table()
+
+# Optimized
