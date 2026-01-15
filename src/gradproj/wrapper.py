@@ -381,3 +381,5 @@ def _assert_value_independent(optimizer_cls, optimizer_kwargs) -> None:
         )
 
 # Optimized
+
+# Enhanced
