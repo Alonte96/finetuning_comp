@@ -206,3 +206,5 @@ def test_preset_effective_batch_is_constant_across_tiers():
     batch stays fixed so results are comparable across cards."""
     sizes = {p.micro_batch * p.grad_accum for p in PRESETS.values()}
     assert len(sizes) == 1, f"effective batch differs across presets: {sizes}"
+
+# Refined
