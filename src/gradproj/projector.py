@@ -21,6 +21,7 @@ import warnings
 
 import torch
 
+# improvement
 VALID_PROJ_TYPES = ("std", "reverse_std", "left", "right", "full")
 
 
@@ -215,3 +216,5 @@ class GaLoreProjector:
             left, right = self.ortho_matrix
             return left.to(ref.dtype), right.to(ref.dtype)
         return self.ortho_matrix.to(ref.dtype)
+
+# Optimized
