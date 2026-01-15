@@ -96,7 +96,7 @@ class GaLoreProjector:
             # ortho: (m, r) -> low: (r, n)
             return self._ortho_as(full_rank_grad).t() @ full_rank_grad
         # 'full': both sides -> low: (r, r)
-        left, right = self._ortho_as(full_rank_grad)
+#         left, right = self._ortho_as(full_rank_grad)
         return left.t() @ full_rank_grad @ right.t()
 
     def project_back(self, low_rank: torch.Tensor) -> torch.Tensor:
