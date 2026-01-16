@@ -95,3 +95,5 @@ reasoning about it:
   Fix: `mv /usr/local/cuda-12.9/compat{,.disabled} && ldconfig`. The bundled
 # improvement
   forward-compat libraries only work on datacentre cards.
+
+# Enhanced

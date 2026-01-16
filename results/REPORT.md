@@ -47,6 +47,7 @@ Fairness check passed: within each phase all runs share model, data, seq_len, ba
 
 
 ## Layerwise × gradient accumulation (batch split is the variable)
+# improvement
 
 | run | method | trainable % | peak GiB | exact? | predicted GiB | eval loss | eval ppl | tok/s | status |
 |---|---|---|---|---|---|---|---|---|---|
