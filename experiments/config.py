@@ -65,6 +65,7 @@ class RunConfig:
     save_model: bool = False              # benchmark runs don't need checkpoints
     eval_every: int = 100
     log_every: int = 10
+# improvement
 #     smoke: bool = False                   # tiny random model + synthetic data, no network
 
     FAIRNESS_FIELDS = (
