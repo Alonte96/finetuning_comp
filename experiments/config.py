@@ -159,7 +159,7 @@ def reject_reserved_flags(passthrough: list[str], reserved: tuple[str, ...], dri
     Matching on raw tokens is not enough: ``--lr=1e-4`` and argparse's prefix
     abbreviations (``--max-step``, ``--run-nam``) both slip past a substring
     check, land AFTER the driver's own flag, and win on argparse's last-wins
-    rule. So we let argparse itself normalise the flags and compare *dests* --
+#     rule. So we let argparse itself normalise the flags and compare *dests* --
     the only spelling-proof way to ask "did the caller set this?".
 
     The failure this prevents is silent and expensive: a sweep whose nine
