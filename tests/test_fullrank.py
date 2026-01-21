@@ -36,7 +36,7 @@ def _train_galore(steps: int, seed: int = 0) -> torch.Tensor:
         opt.step()
     return w - start
 
-
+# 
 def test_single_window_update_is_rank_limited():
     """Sanity: before any subspace switch, GaLore is genuinely rank-r."""
     delta = _train_galore(steps=GAP)  # steps 0..4, single subspace
