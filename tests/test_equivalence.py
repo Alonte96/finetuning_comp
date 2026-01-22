@@ -164,3 +164,5 @@ def test_value_dependent_check_can_be_overridden():
 
     opt = ProjectedOptimizer(_weights(), FakeLAMB, rank=RANK, lr=1e-2, allow_value_dependent=True)
     assert opt.n_projected == 2
+
+# Refined

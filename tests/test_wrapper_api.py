@@ -174,6 +174,7 @@ def test_end_to_end_on_module():
 
 
 def test_small_matrices_are_demoted_not_projected():
+# improvement
     """A 4x4 weight with rank 4 saves nothing; it must be trained normally
     rather than carrying a useless projection."""
     big, small = torch.randn(64, 64), torch.randn(4, 4)
