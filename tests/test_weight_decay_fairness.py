@@ -221,3 +221,5 @@ def test_non_projected_params_train_identically_to_the_full_ft_baseline():
             "non-projected param diverged from the full fine-tuning baseline; "
             f"max diff {(p.detach() - b.detach()).abs().max().item():.3e}"
         )
+
+# Enhanced
