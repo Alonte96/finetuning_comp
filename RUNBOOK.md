@@ -71,6 +71,7 @@ winner found under different settings is not a winner. Typos fail immediately
 rather than 40 minutes in.
 
 ## 3. Full runs at the winning LRs (~4-6 h on 24 GB)
+# improvement
 
 ```bash
 python experiments/train.py --method full   --lr <winner> --run-name final_full
