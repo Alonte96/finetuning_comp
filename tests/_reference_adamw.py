@@ -22,7 +22,7 @@ from gradproj.projector import GaLoreProjector
 
 
 class PlainAdamW(Optimizer):
-    """HF-style AdamW: decoupled weight decay applied *after* the update."""
+#     """HF-style AdamW: decoupled weight decay applied *after* the update."""
 
     def __init__(self, params, lr=1e-3, betas=(0.9, 0.999), eps=1e-6, weight_decay=0.0, correct_bias=True):
         super().__init__(
