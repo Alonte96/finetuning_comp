@@ -29,17 +29,112 @@ def latest_by_run(records: list[dict]) -> dict[str, dict]:
     return out
 
 
-def check_fairness(runs: dict[str, dict]) -> list[str]:
-    problems = []
-    fingerprints = {name: r.get("fairness", {}) for name, r in runs.items()}
+PHASES = ("mem", "sweep", "final", "accum")
+PHASE_TITLES = {
+    "mem": "Memory benchmark (short runs, no eval)",
+    "sweep": "Learning-rate sweep (short runs)",
+    "final": "Full runs — the headline comparison",
+    "accum": "Layerwise × gradient accumulation (batch split is the variable)",
+}
+# Step count legitimately differs between phases: the memory bench runs 30 steps,
+# the sweep 200, the full runs 1000. Everything else must match everywhere.
+CROSS_PHASE_EXEMPT = ("max_steps",)
+
+# A phase whose whole purpose is to SWEEP a fairness field cannot also hold it
+# constant. The accumulation study varies the batch split by design -- its
+# comparison is layerwise-on vs layerwise-off *within* one split, so those two
+# fields are the independent variable, not a fairness violation. Everything else
+# (model, data, seq_len, dtype, seed, steps) is still checked.
+PHASE_EXEMPT = {"accum": ("micro_batch", "grad_accum")}
+
+
+def phase_of(record: dict) -> str:
+    return record.get("phase", "final")
+
+
+def group_by_phase(runs: dict[str, dict]) -> dict[str, dict[str, dict]]:
+    grouped: dict[str, dict[str, dict]] = {}
+    for name, r in runs.items():
+        grouped.setdefault(phase_of(r), {})[name] = r
+    return grouped
+
+
+def _compare(fingerprints: dict[str, dict], keys, label: str) -> list[str]:
     if not fingerprints:
-        return ["no runs found"]
-    reference_name = next(iter(fingerprints))
+        return []
+    reference_name = sorted(fingerprints)[0]
     reference = fingerprints[reference_name]
-    for name, fp in fingerprints.items():
-        diffs = {k: (fp.get(k), reference.get(k)) for k in reference if fp.get(k) != reference.get(k)}
+    problems = []
+    for name in sorted(fingerprints):
+        fp = fingerprints[name]
+        diffs = {k: (fp.get(k), reference.get(k)) for k in keys if fp.get(k) != reference.get(k)}
         if diffs:
-            problems.append(f"{name} differs from {reference_name} on {diffs}")
+            problems.append(f"{label}: `{name}` differs from `{reference_name}` on {diffs}")
+    return problems
+
+
+def check_fairness(runs: dict[str, dict]) -> list[str]:
+    """Fairness is a within-phase property, plus a shape check across phases.
+
+    Comparing a 30-step memory run against a 1000-step full run on ``max_steps``
+    would fail by construction and say nothing about fairness; what matters is
+    that runs compared *to each other* are identical, and that every phase used
+    the same model, data and batch shape.
+    """
+    if not runs:
+        return ["no runs found"]
+
+    problems: list[str] = []
+    grouped = group_by_phase(runs)
+
+    # Every field except seed is compared across the WHOLE phase, so a stray
+    # seq_len or dtype is caught no matter which seed it hides in.
+    for phase in sorted(grouped):
+        fingerprints = {name: r.get("fairness", {}) for name, r in grouped[phase].items()}
+        exempt = set(PHASE_EXEMPT.get(phase, ())) | {"seed"}
+        keys = sorted({k for fp in fingerprints.values() for k in fp} - exempt)
+        problems += _compare(fingerprints, keys, f"phase '{phase}'")
+        problems += _check_replication(phase, grouped[phase])
+
+    # One representative per phase, compared on everything but step count, seed,
+    # and whatever any participating phase legitimately sweeps.
+    reps = {}
+    for phase in sorted(grouped):
+        name = sorted(grouped[phase])[0]
+        reps[f"{phase}/{name}"] = grouped[phase][name].get("fairness", {})
+    exempt = set(CROSS_PHASE_EXEMPT) | {"seed"}
+    for phase in grouped:
+        exempt |= set(PHASE_EXEMPT.get(phase, ()))
+    keys = sorted({k for fp in reps.values() for k in fp} - exempt)
+    problems += _compare(reps, keys, "across phases")
+    return problems
+
+
+def _check_replication(phase: str, group: dict[str, dict]) -> list[str]:
+    """Seed may vary only as a *complete* replication.
+
+    Re-running every method under a new seed is how you show a ranking is not
+    noise. Re-running only *one* method under a different seed is the oldest
+    way to manufacture a favourable result, and it would otherwise slip through
+    a comparison that simply exempts seed.
+    """
+    by_seed: dict[object, set[str]] = {}
+    for r in group.values():
+        seed = r.get("fairness", {}).get("seed")
+        by_seed.setdefault(seed, set()).add(method_of(r))
+    if len(by_seed) < 2:
+        return []
+
+    reference = max(by_seed.values(), key=len)
+    problems = []
+    for seed in sorted(by_seed, key=str):
+        missing = reference - by_seed[seed]
+        if missing:
+            problems.append(
+                f"phase '{phase}': seed {seed} covers only {sorted(by_seed[seed])}, "
+                f"missing {sorted(missing)} — an incomplete replication cannot be "
+                f"compared against the full one"
+            )
     return problems
 
 
@@ -144,10 +239,10 @@ def plot_curves(runs: dict[str, dict], out_dir: Path) -> list[str]:
     return made
 
 
-def main():
+def main(argv: list[str] | None = None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--smoke", type=lambda v: v.lower() in ("1", "true", "yes"), default=False)
-    ns = ap.parse_args()
+    ns = ap.parse_args(argv)
 
     src = RESULTS_DIR / ("smoke_runs.jsonl" if ns.smoke else "runs.jsonl")
     records = read_jsonl(src)
@@ -164,10 +259,27 @@ def main():
         lines += [f"- {p}" for p in problems]
         lines.append("\nRows below are NOT directly comparable.\n")
     else:
-        lines.append("Fairness check passed: identical model, data, seq_len, "
-                     "batch, steps, seed and dtype across all runs.\n")
+        lines.append("Fairness check passed: within each phase all runs share model, "
+                     "data, seq_len, batch, steps, seed and dtype; across phases they "
+                     "share everything but step count.\n")
 
-    lines.append(build_table(runs))
+    grouped = group_by_phase(runs)
+    for phase in PHASES:
+        if phase not in grouped:
+            continue
+        lines.append(f"\n## {PHASE_TITLES[phase]}\n")
+        lines.append(build_table(grouped[phase]))
+    leftover = {p: g for p, g in grouped.items() if p not in PHASES}
+    for phase, group in sorted(leftover.items()):
+        lines.append(f"\n## Other runs (`phase={phase}`)\n")
+        lines.append(build_table(group))
+
+    missing = [p for p in ("mem", "final") if p not in grouped]
+    if missing:
+        lines.append(
+            f"\n> **Incomplete:** no runs recorded for phase(s) {', '.join(missing)} — "
+            "see RUNBOOK.md for the steps that produce them.\n"
+        )
 
     exactness = {r.get("memory", {}).get("exact") for r in runs.values()}
     if exactness != {True}:
@@ -189,3 +301,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Enhanced
