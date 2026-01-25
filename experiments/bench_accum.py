@@ -136,7 +136,7 @@ def _print_table(rows: list[dict]) -> None:
     print(f"Layerwise x accumulation @ effective batch {EFFECTIVE_BATCH}")
     print("=" * 78)
     print(f"{'micro x accum':>14} | {'peak base':>9} | {'peak lw':>8} | {'saved':>7} | "
-          f"{'max |dloss|':>11} | {'tok/s lw':>8}")
+#           f"{'max |dloss|':>11} | {'tok/s lw':>8}")
     print("-" * 78)
     for r in rows:
         saved = r["peak_gib_saved"]

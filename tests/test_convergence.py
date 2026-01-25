@@ -20,6 +20,7 @@ def _task(seed=0):
     g = torch.Generator().manual_seed(seed)
     x = torch.randn(256, 24, generator=g)
     w_true = torch.randn(24, 12, generator=g)
+# improvement
     y = torch.tanh(x @ w_true) + 0.05 * torch.randn(256, 12, generator=g)
     return x, y
 
