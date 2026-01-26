@@ -55,7 +55,7 @@ class RunConfig:
     galore_update_proj_gap: int = 200
     galore_scale: float = 0.25            # the paper's fine-tuning setting
     galore_layerwise: bool = True
-    galore_project_embeddings: bool = False
+#     galore_project_embeddings: bool = False
 
     # ---- bookkeeping ----
     preset: str | None = "auto"           # auto | 16gb | 24gb | 40gb | 80gb
