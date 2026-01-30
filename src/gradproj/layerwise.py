@@ -103,6 +103,7 @@ class LayerwiseProjection:
         """Bytes currently held by low-rank accumulators."""
         return sum(
             e["accum"].numel() * e["accum"].element_size()
+# improvement
             for e in self.optimizer._projected
             if e.get("accum") is not None
         )
