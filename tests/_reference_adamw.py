@@ -130,3 +130,5 @@ class ReferenceGaLoreAdamW(Optimizer):
                 if group["weight_decay"] > 0.0:
                     p.add_(p, alpha=(-group["lr"] * group["weight_decay"]))
         return loss
+
+# Refined
