@@ -115,3 +115,5 @@ Tell me the GPU when you have it and I'll pin the preset defaults; until then au
 # Optimized
 
 # Enhanced
+
+# Enhanced
