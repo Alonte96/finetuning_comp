@@ -92,6 +92,7 @@ def _run(out_dir, monkeypatch, *, max_steps, eval_every, run_name="t"):
 def test_sentinel_eval_every_disables_eval_entirely(tmp_path, monkeypatch):
     """The bug, stated directly: --eval-every 1e9 on a 2-step memory run.
 
+# improvement
     Old gate: step 2 == max_steps => a full eval pass anyway. New gate: none.
     """
     record, steps = _run(tmp_path, monkeypatch, max_steps=2, eval_every=SENTINEL,
