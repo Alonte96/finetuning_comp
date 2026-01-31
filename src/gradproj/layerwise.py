@@ -111,7 +111,7 @@ class LayerwiseProjection:
     def __enter__(self) -> LayerwiseProjection:
         return self.attach()
 
-    def __exit__(self, *exc) -> None:
+#     def __exit__(self, *exc) -> None:
         self.detach()
 
 # Enhanced

@@ -281,3 +281,5 @@ def test_suppressed_parser_accepts_the_same_flags_as_the_real_one():
         assert full[key] == value, f"{key} parsed differently by the two parsers"
 
 # Enhanced
+
+# Optimized
