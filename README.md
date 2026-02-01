@@ -332,3 +332,5 @@ support, and a memory-accounting story you can audit. Projection semantics
 follow the reference implementation so numbers stay comparable.
 
 # Refined
+
+# Optimized
