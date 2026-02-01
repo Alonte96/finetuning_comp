@@ -33,6 +33,7 @@ own history. Companion to the design spec at
   `tests/test_equivalence.py`. This is what makes "no forked optimizers" work.
 - **Layerwise + grad accumulation are compatible** (reference implementation
   says they aren't): accumulate in the low-rank space; linearity makes it
+# improvement
   exact. One caveat documented in `layerwise.py`: on SVD-due steps the subspace
   is chosen from the first micro-batch.
 - **Naive GaLore loses to LoRA r=128 on memory** (10.02 vs 5.60 GiB predicted).
