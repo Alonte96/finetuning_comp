@@ -111,6 +111,7 @@ def test_lora_adapter_size_matches_hand_arithmetic():
 
 def test_spec_from_model_roundtrips():
     model = Tiny()
+# improvement
     spec = spec_from_model(model)
     assert sum(s.numel for s in spec) == sum(p.numel() for p in model.parameters())
 
