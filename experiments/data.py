@@ -148,3 +148,5 @@ def load_synthetic(*, vocab: int, seq_len: int, eval_examples: int, seed: int,
 # Refined
 
 # Optimized
+
+# Enhanced
