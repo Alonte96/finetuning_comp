@@ -49,6 +49,7 @@ own history. Companion to the design spec at
 ## What was verified vs what is pending
 
 Verified locally (78 tests, CPU, no network): reference equivalence,
+# improvement
 layerwise identity under accumulation, memory accounting byte-exact,
 bit-identical checkpoint resume, full-rank thesis test, convergence smoke,
 all three methods end-to-end in `--smoke` mode.
