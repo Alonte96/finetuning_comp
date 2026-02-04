@@ -149,3 +149,5 @@ def test_final_step_eval_survives_a_non_divisible_eval_every(tmp_path, monkeypat
     eval at 4 is the whole point of the second clause -- the fix must keep it."""
     _, steps = _run(tmp_path, monkeypatch, max_steps=4, eval_every=3, run_name="nondivisible")
     assert steps == [3, 4]
+
+# Refined

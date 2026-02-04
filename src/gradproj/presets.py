@@ -71,3 +71,5 @@ def select_preset(name: str | None = None, device: int = 0) -> Preset:
 
     eligible = [p for p in PRESETS.values() if gib >= p.min_gib]
     return max(eligible, key=lambda p: p.min_gib)
+
+# Enhanced
