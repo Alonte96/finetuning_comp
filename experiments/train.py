@@ -12,6 +12,7 @@ a record of the failure, because on small cards full FT OOMing IS the result.
 
 from __future__ import annotations
 
+import gc
 import math
 import sys
 import time
@@ -33,6 +34,49 @@ def pick_device() -> torch.device:
     if torch.backends.mps.is_available():
         return torch.device("mps")
     return torch.device("cpu")
+
+
+def _is_oom(exc: BaseException) -> bool:
+    """CUDA reports exhaustion as OutOfMemoryError, but cuBLAS/cuDNN allocation
+    failures inside a near-full allocator surface as plain RuntimeErrors."""
+    if isinstance(exc, torch.cuda.OutOfMemoryError):
+        return True
+    text = str(exc).lower()
+    return isinstance(exc, RuntimeError) and (
+        "out of memory" in text
+        or "cublas_status_alloc_failed" in text
+        or "cudnn_status_alloc_failed" in text
+    )
+
+
+def build_autocast(cfg: RunConfig, device: torch.device):
+    """Autocast context factory, with the dtype guards this benchmark needs.
+
+    fp16 is refused rather than silently mis-trained: it needs loss scaling, and
+    a GradScaler cannot unscale gradients that GaLore's layerwise hooks have
+    already projected and freed during backward.
+    """
+    if cfg.dtype not in ("bf16", "fp16", "fp32"):
+        raise SystemExit(f"--dtype must be bf16|fp16|fp32, got {cfg.dtype}")
+    if cfg.dtype == "fp16":
+        raise SystemExit(
+            "--dtype fp16 is not supported: fp16 autocast requires loss scaling, and "
+            "GradScaler cannot see gradients that layerwise projection frees during "
+            "backward. Use --dtype bf16 (default) or fp32."
+        )
+    if cfg.dtype == "bf16" and device.type == "cuda" and not torch.cuda.is_bf16_supported():
+        raise SystemExit(
+            f"--dtype bf16 needs a bf16-capable GPU; {torch.cuda.get_device_name(device)} "
+            "(pre-Ampere) is not. Re-run every method with --dtype fp32 so the "
+            "comparison stays fair."
+        )
+
+    autocast_dtype = {"bf16": torch.bfloat16, "fp16": torch.float16, "fp32": None}[cfg.dtype]
+    if autocast_dtype is not None and device.type in ("cuda", "mps"):
+        return lambda: torch.autocast(device_type=device.type, dtype=autocast_dtype)
+    import contextlib
+
+    return contextlib.nullcontext
 
 
 def build_model_and_data(cfg: RunConfig, device: torch.device):
@@ -151,6 +195,7 @@ def main(argv=None):
 
     record = {
         "run": run_name,
+        "phase": cfg.phase,
         "config": cfg.as_dict(),
         "fairness": cfg.fairness_fingerprint(),
         "device": str(device),
@@ -159,12 +204,21 @@ def main(argv=None):
         "evals": [],
     }
 
-    autocast_dtype = {"bf16": torch.bfloat16, "fp16": torch.float16, "fp32": None}[cfg.dtype]
-    if autocast_dtype and device.type in ("cuda", "mps"):
-        autocast_ctx = lambda: torch.autocast(device_type=device.type, dtype=autocast_dtype)
-    else:
-        import contextlib
-        autocast_ctx = contextlib.nullcontext
+    autocast_ctx = build_autocast(cfg, device)
+
+    # An eval_every of <=0, or one larger than max_steps, means "no eval at all"
+    # -- the memory bench uses it so eval activations never land in a peak-memory
+    # measurement. Anything else also evaluates on the final step. Never let this
+    # be silent: a run that quietly produces no quality number looks like a
+    # completed run in the table.
+    evaluating = 0 < cfg.eval_every <= cfg.max_steps
+    if not evaluating:
+        print(f"[{run_name}] eval DISABLED (--eval-every {cfg.eval_every} vs "
+              f"--max-steps {cfg.max_steps}): this run reports memory and speed, "
+              f"no eval loss")
+
+    model = opt = layerwise = sched = None
+    train_loader = eval_loader = data_iter = None
 
     probe = MemoryProbe(device)
     try:
@@ -220,7 +274,7 @@ def main(argv=None):
                     print(f"  step {step:>5} loss {loss.item():.4f} "
                           f"({step_times[-1]:.2f}s/step)")
 
-                if step % cfg.eval_every == 0 or step == cfg.max_steps:
+                if evaluating and (step % cfg.eval_every == 0 or step == cfg.max_steps):
                     ev = evaluate(model, eval_loader, device, autocast_ctx)
                     ev["step"] = step
                     record["evals"].append(ev)
@@ -239,10 +293,17 @@ def main(argv=None):
             if hasattr(opt, "memory_breakdown"):
                 record["optimizer_memory_measured"] = opt.memory_breakdown()
 
-    except torch.cuda.OutOfMemoryError as e:
+    except (torch.cuda.OutOfMemoryError, RuntimeError) as e:
+        if not _is_oom(e):
+            raise
         record.update(status="oom", error=str(e).split("\n")[0])
         print(f"[{run_name}] OOM -- recorded as a result: {record['error']}")
     finally:
+        # Layerwise hooks are held by autograd's C++ state, which Python's cyclic
+        # GC cannot traverse: without this the model+optimizer stay resident for
+        # the rest of the process and poison the next config's peak measurement.
+        if layerwise is not None:
+            layerwise.detach()
         record["memory"] = probe.report()
         append_jsonl(out_path, record)
         print(f"[{run_name}] {record['status']} | peak "
@@ -253,6 +314,17 @@ def main(argv=None):
     if cfg.save_model and record["status"] == "completed":
         save_dir = Path(cfg.out_dir) / "checkpoints" / run_name
         model.save_pretrained(save_dir)
+
+    # Drivers (bench_memory, sweep_lr) call this repeatedly in one process, so
+    # every run must return the device to a clean baseline.
+    model = opt = layerwise = sched = None
+    train_loader = eval_loader = data_iter = None
+    loss = batch = None
+    gc.collect()
+    if device.type == "cuda":
+        torch.cuda.empty_cache()
+    elif device.type == "mps":
+        torch.mps.empty_cache()
 
     return record
 
@@ -270,3 +342,5 @@ def _analytic(cfg: RunConfig, spec) -> dict:
 
 if __name__ == "__main__":
     main()
+
+# Refined
