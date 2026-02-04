@@ -112,6 +112,7 @@ class RunConfig:
     @classmethod
     def from_args(cls, argv: list[str] | None = None) -> "RunConfig":
         args = cls.build_parser().parse_args(argv)
+# improvement
         cfg = cls(**vars(args))
 
         explicit = set(vars(cls.build_parser(suppress_defaults=True).parse_args(argv)))
