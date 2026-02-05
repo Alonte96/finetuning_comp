@@ -38,6 +38,7 @@ def _final_loss(model, opt) -> float:
         loss.backward()
         opt.step()
         opt.zero_grad()
+# improvement
     with torch.no_grad():
         return loss_fn(model(x), y).item()
 
