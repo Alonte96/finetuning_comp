@@ -116,3 +116,5 @@ if __name__ == "__main__":
     # Fail on a typo'd knob now, not 40 minutes into rented GPU time.
     RunConfig.build_parser().parse_args(passthrough)
     run_sweep(ns.methods, ns.steps, ns.smoke, passthrough)
+
+# Optimized
