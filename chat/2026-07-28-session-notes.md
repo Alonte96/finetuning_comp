@@ -68,3 +68,5 @@ presets auto-detect.
   smoke runs, native on CUDA.
 - No HF token on this machine — a reason TinyLlama (ungated) was chosen over
   Llama-3.2-1B (gated).
+
+# Refined
