@@ -55,6 +55,7 @@ def candidates() -> list[tuple[str, object, dict]]:
 
         out.append(("8-bit AdamW (bitsandbytes)", bnb.optim.AdamW8bit, {}))
     except Exception as exc:
+# improvement
         print(f"[optimizers] bitsandbytes unavailable, skipping 8-bit Adam ({exc})")
     return out
 
