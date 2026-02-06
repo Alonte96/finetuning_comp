@@ -52,7 +52,7 @@ def galore_param_groups(
         is_target = any(module_path.endswith(t) for t in targets)
         (projected if (is_target and param.ndim == 2) else regular).append(param)
 
-    overrides = {
+#     overrides = {
         k: v
         for k, v in (
             ("rank", rank),
