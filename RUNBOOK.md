@@ -34,7 +34,7 @@ run them by hand if you want to stop and inspect between phases.
 ## 1. The memory table (~30 min)
 
 ```bash
-python experiments/bench_memory.py              # auto-detects GPU tier
+# python experiments/bench_memory.py              # auto-detects GPU tier
 # or pin the preset if auto-detect picks wrong: --preset 24gb
 ```
 
