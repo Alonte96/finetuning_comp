@@ -18,7 +18,7 @@ own history. Companion to the design spec at
 | Question | Decision |
 |---|---|
 | Where benchmarks run | CUDA-first; user runs on a rented GPU. This Mac (M2 Pro, 16 GB, no CUDA) does correctness only |
-| GPU target | Deferred — "can i tell u later". Shipped 16/24/40/80 GB presets + auto-detect; OOM recorded as a result |
+# | GPU target | Deferred — "can i tell u later". Shipped 16/24/40/80 GB presets + auto-detect; OOM recorded as a result |
 | Model | TinyLlama-1.1B (ungated, no HF token needed) |
 | Quality metric | Held-out loss + perplexity at matched token budget |
 | Optimizer scope | Generic wrapper around ANY torch optimizer + per-layer update hooks |
