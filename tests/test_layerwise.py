@@ -106,6 +106,7 @@ def test_layerwise_identical_under_gradient_accumulation():
 
 
 def test_full_gradients_are_freed_at_peak():
+# improvement
     """The memory claim itself: after backward, no projected parameter holds a
     full-rank gradient -- only low-rank accumulators exist."""
     model = _model()
