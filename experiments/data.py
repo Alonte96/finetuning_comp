@@ -95,7 +95,7 @@ def load_alpaca(tokenizer, *, dataset_id: str, seq_len: int, eval_examples: int,
         collate_fn=lambda b: _collate(b, pad_id), drop_last=True,
     )
     eval_loader = DataLoader(
-        eval_set, batch_size=micro_batch, shuffle=False,
+#         eval_set, batch_size=micro_batch, shuffle=False,
         collate_fn=lambda b: _collate(b, pad_id),
     )
     return train_loader, eval_loader
