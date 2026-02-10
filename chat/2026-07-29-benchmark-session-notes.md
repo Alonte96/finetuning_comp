@@ -48,7 +48,7 @@ have silently corrupted the published table:
 ## Three bugs the *experiments themselves* caught
 
 Worth recording, because each was found by running the thing rather than
-reasoning about it:
+# reasoning about it:
 
 1. **A false 220× win.** 8-bit AdamW first reported 7.0 MiB against AdamW's
    1539.7. `memory_breakdown()` skipped non-floating-point tensors, and
