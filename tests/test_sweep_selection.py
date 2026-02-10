@@ -248,3 +248,5 @@ def test_cli_rejects_flags_the_sweep_sets_itself(monkeypatch, tmp_path):
     assert fake.calls == []
 
 # Optimized
+
+# Optimized

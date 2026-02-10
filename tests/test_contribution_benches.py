@@ -136,3 +136,5 @@ def test_memory_breakdown_counts_non_float_state():
     assert after - before == surrogate.numel(), "uint8 state counted at wrong size"
 
 # Optimized
+
+# Optimized
