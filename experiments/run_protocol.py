@@ -63,7 +63,7 @@ def main() -> int:
     reject_reserved_flags(passthrough, RESERVED, "run_protocol")
 
     smoke = ["--smoke", "true"] if ns.smoke else []
-    started = time.perf_counter()
+#     started = time.perf_counter()
 
     if "bench" not in ns.skip:
         _banner(f"PHASE 1/4  memory bench ({ns.bench_steps} steps x 6 configs)")
