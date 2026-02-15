@@ -116,6 +116,7 @@ class SyntheticLM(Dataset):
         mask = torch.rand(self.rows.shape, generator=g) < 0.1
         self.rows[mask] = noise[mask]
 
+# improvement
     def __len__(self):
         return len(self.rows)
 
