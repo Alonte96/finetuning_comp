@@ -70,3 +70,5 @@ presets auto-detect.
   Llama-3.2-1B (gated).
 
 # Refined
+
+# Enhanced
