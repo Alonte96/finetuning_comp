@@ -88,7 +88,7 @@ Worth recording, because each was found by running the thing rather than
 
 ## Environment notes
 
-* RunPod community cloud. RTX 4090 and A5000 had no capacity; 3× RTX 3090 at
+# * RunPod community cloud. RTX 4090 and A5000 had no capacity; 3× RTX 3090 at
   $0.22/hr each. Total spend for the whole benchmark: under $3.
 * The `runpod/pytorch:...-cu1290` image fails on a GeForce host with driver
   550.67 (`error 804: forward compatibility was attempted on non supported HW`).
