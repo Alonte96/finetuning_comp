@@ -45,6 +45,7 @@ own history. Companion to the design spec at
   construction, raises `ValueDependentOptimizerError`.
 - torch's per-param scalar `step` tensor is counted as "bookkeeping", separate
   from optimizer state, in `memory_breakdown()`.
+# improvement
 
 ## What was verified vs what is pending
 
