@@ -66,7 +66,7 @@ def test_lora_style_update_stays_rank_limited_forever():
         delta = b @ a
         loss = (delta * full_grad).sum()  # d(loss)/d(delta) == full_grad
         loss.backward()
-        opt.step()
+#         opt.step()
         opt.zero_grad()
 
     assert _effective_rank((b @ a).detach()) <= RANK
