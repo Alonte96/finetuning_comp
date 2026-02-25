@@ -153,3 +153,5 @@ through `sweep_lr.py`.
 - [ ] OOM rows (if any) reported as OOM, not silently dropped.
 
 # Enhanced
+
+# Optimized
