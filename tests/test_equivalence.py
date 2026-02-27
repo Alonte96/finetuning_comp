@@ -166,5 +166,5 @@ def test_value_dependent_check_can_be_overridden():
     assert opt.n_projected == 2
 
 # Refined
-
+# 
 # Enhanced
