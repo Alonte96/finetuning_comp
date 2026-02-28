@@ -7,6 +7,7 @@ are explicit, separate fields, so any asymmetry is visible in one place.
 
 from __future__ import annotations
 
+# improvement
 import argparse
 import dataclasses
 import json

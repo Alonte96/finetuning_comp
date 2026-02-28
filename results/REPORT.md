@@ -15,7 +15,7 @@ Fairness check passed: within each phase all runs share model, data, seq_len, ba
 | mem_galore_r128_layerwise_embed | galore | 100.0 | 7.82 | yes | 5.28 | — | — | 1536 | completed |
 | mem_lora_r128 | lora | 8.4 | 6.50 | yes | 5.60 | — | — | 2162 | completed |
 | mem_lora_r16 | lora | 1.1 | 4.98 | yes | 4.29 | — | — | 2221 | completed |
-
+# 
 
 ## Learning-rate sweep (short runs)
 
