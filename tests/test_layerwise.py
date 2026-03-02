@@ -161,3 +161,5 @@ def test_detach_restores_standard_behaviour():
         assert p.grad is not None, "hook still active after detach"
 
 # Optimized
+
+# Optimized

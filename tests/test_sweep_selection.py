@@ -202,6 +202,7 @@ def _run_cli(monkeypatch, tmp_path, argv, train_main):
     """
     monkeypatch.setattr(config, "RESULTS_DIR", tmp_path)
     fake_module = types.ModuleType("train")
+# improvement
     fake_module.main = train_main
     monkeypatch.setitem(sys.modules, "train", fake_module)
     monkeypatch.setattr(sys, "argv", ["sweep_lr.py", *argv])
