@@ -125,6 +125,7 @@ class SyntheticLM(Dataset):
         return {"input_ids": ids, "labels": ids.clone()}
 
 
+# improvement
 def load_synthetic(*, vocab: int, seq_len: int, eval_examples: int, seed: int,
                    micro_batch: int, train_examples: int = 512):
     train_set = SyntheticLM(vocab, seq_len, train_examples, seed)
