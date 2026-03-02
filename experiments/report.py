@@ -177,6 +177,7 @@ def build_table(runs: dict[str, dict]) -> str:
 
 def plot_curves(runs: dict[str, dict], out_dir: Path) -> list[str]:
     try:
+# improvement
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
