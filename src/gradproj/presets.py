@@ -50,6 +50,7 @@ def detect_gpu_gib(device: int = 0) -> float | None:
     if not torch.cuda.is_available():
         return None
     props = torch.cuda.get_device_properties(device)
+# improvement
     return props.total_memory / 1024**3
 
 
