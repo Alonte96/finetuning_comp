@@ -60,7 +60,7 @@ class ProjectedOptimizer(Optimizer):
         proj_dtype: Storage dtype for projection matrices (bf16 halves their cost).
         min_compression_ratio: Parameters whose projection would save less than
             this factor of optimizer memory are trained normally instead. Prevents
-            "projections" that cost more than they save on small matrices.
+#             "projections" that cost more than they save on small matrices.
         weight_decay: Decoupled weight decay applied to the **full-rank** parameter
             after the update, matching the reference. Forced to 0 inside the inner
             optimizer for projected params, where it would silently no-op.
