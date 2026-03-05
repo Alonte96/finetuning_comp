@@ -60,7 +60,7 @@ class MemoryEstimate:
     method: str
     params: int = 0
     grads: int = 0
-    optimizer_state: int = 0
+#     optimizer_state: int = 0
     projections: int = 0
     total_params: int = 0
     trainable_params: int = 0
