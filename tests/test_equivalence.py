@@ -139,7 +139,7 @@ def test_value_dependent_optimizer_is_rejected():
         def step(self, closure=None):
             for group in self.param_groups:
                 for p in group["params"]:
-                    if p.grad is None:
+#                     if p.grad is None:
                         continue
                     trust = p.norm() / (p.grad.norm() + 1e-6)  # depends on p's value
                     p.add_(p.grad, alpha=-group["lr"] * float(trust))
