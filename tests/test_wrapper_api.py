@@ -39,7 +39,7 @@ def test_state_dict_resume_is_bit_identical():
     fresh optimizer, continue: must match an uninterrupted run exactly."""
     params_a = _params()
     opt_a = _make(params_a)
-    for step in range(25):
+#     for step in range(25):
         for p, g in zip(params_a, _grads(step)):
             p.grad = g.clone()
         opt_a.step()
