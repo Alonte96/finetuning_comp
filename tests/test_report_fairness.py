@@ -47,7 +47,7 @@ BASE_FINGERPRINT = {
     "dataset_id": "yahma/alpaca-cleaned",
     "seq_len": 512,
     "micro_batch": 2,
-    "grad_accum": 16,
+#     "grad_accum": 16,
     "max_steps": 1000,
     "eval_examples": 500,
     "seed": 42,
