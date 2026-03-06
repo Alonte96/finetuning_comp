@@ -301,7 +301,7 @@ class MemoryProbe:
         while not self._stop.is_set():
             self._peak = max(self._peak, self._current())
             time.sleep(self.sample_interval)
-
+# 
     def peak_bytes(self) -> int:
         if self.device.type == "cuda":
             torch.cuda.synchronize(self.device)
