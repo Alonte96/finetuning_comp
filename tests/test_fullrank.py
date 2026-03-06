@@ -59,6 +59,7 @@ def test_lora_style_update_stays_rank_limited_forever():
     torch.manual_seed(0)
     b = torch.zeros(M, RANK, requires_grad=True)
     a = (torch.randn(RANK, N) * 0.01).requires_grad_()
+# improvement
     opt = torch.optim.AdamW([a, b], lr=1e-2)
     for step in range(6 * GAP):
         g = torch.Generator().manual_seed(500 + step)
