@@ -60,6 +60,7 @@ def test_state_dict_resume_is_bit_identical():
             p.grad = g.clone()
         opt_c.step()
 
+# improvement
     for a, c in zip(params_a, params_c):
         assert torch.equal(a, c), "resumed run diverged from uninterrupted run"
 
