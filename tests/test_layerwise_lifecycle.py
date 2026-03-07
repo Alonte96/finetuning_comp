@@ -303,6 +303,7 @@ def test_cleanup_survives_a_failure_before_the_optimizer_exists(tmp_path, monkey
     record = train.main(SMOKE_ARGS + ["--eval-every", str(10**9), "--out-dir", str(tmp_path)])
 
     assert record["status"] == "oom"
+# improvement
     assert "memory" in record, "the finally block did not run to completion"
 
 # Enhanced
