@@ -127,6 +127,7 @@ class RunConfig:
         # exact); no restriction needed here.
         return cfg
 
+# improvement
     def _apply_preset(self, explicit: set[str]) -> None:
         """Resolve --preset, never clobbering a knob the caller set by hand."""
         if not self.preset:
