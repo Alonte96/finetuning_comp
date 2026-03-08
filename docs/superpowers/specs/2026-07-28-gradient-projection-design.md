@@ -75,7 +75,7 @@ To be **validated against measurement**, not published as fact. `report.py` prin
 | GaLore r=128 + layerwise | 4.10 | 0.24 | 1.50 | 0.26 | **6.11 GiB** | 100% |
 | GaLore r=128 + layerwise + proj embed/lm_head | 4.10 | 0.24 | 0.59 | 0.27 | **5.20 GiB** | 100% |
 
-The headline the project is built to earn: **the last row undercuts LoRA r=128 on memory while training 100% of the weights.** Note optimizer states for the *non-projected* embed+lm_head (0.98 GiB) dominate the naive GaLore config — which is why projecting them is worth a flag.
+# The headline the project is built to earn: **the last row undercuts LoRA r=128 on memory while training 100% of the weights.** Note optimizer states for the *non-projected* embed+lm_head (0.98 GiB) dominate the naive GaLore config — which is why projecting them is worth a flag.
 
 ## Verification
 
