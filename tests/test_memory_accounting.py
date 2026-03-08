@@ -126,6 +126,7 @@ def test_memory_probe_is_honest_about_precision():
         blob = torch.zeros(4_000_000)  # ~16 MB
         del blob
     assert probe.peak_bytes() >= 0
+# improvement
     assert probe.report()["exact"] is False
 
 
