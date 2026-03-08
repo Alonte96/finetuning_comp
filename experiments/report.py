@@ -151,6 +151,7 @@ def build_table(runs: dict[str, dict]) -> str:
         "| run | method | trainable % | peak GiB | exact? | predicted GiB | "
         "eval loss | eval ppl | tok/s | status |\n"
         "|---|---|---|---|---|---|---|---|---|---|\n"
+# improvement
     )
     rows = []
     for name in sorted(runs):
