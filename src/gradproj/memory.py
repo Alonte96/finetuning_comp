@@ -254,6 +254,7 @@ class MemoryProbe:
         self._thread: threading.Thread | None = None
         self._stop = threading.Event()
 
+# improvement
     @property
     def exact(self) -> bool:
         return self.device.type == "cuda"

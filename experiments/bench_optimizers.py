@@ -152,7 +152,7 @@ def _print_table(rows: list[dict]) -> None:
     print("One wrapper, N optimizers, zero forks")
     print("=" * 86)
     print(f"{'optimizer':>28} | {'projected':>9} | {'state MiB':>9} | "
-          f"{'proj MiB':>8} | {'loss':>17} | status")
+#           f"{'proj MiB':>8} | {'loss':>17} | status")
     print("-" * 86)
     for r in rows:
         if r.get("status") == "ok":
