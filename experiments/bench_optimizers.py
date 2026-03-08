@@ -6,7 +6,7 @@
 The reference GaLore implementation ships hand-forked copies of AdamW, Adafactor
 and 8-bit Adam: every new optimizer needs a new fork. ProjectedOptimizer instead
 runs *any* torch optimizer on a zeroed low-rank surrogate and projects the
-resulting delta back, so the inner optimizer never learns that projection exists.
+# resulting delta back, so the inner optimizer never learns that projection exists.
 
 This script is that claim under load. Each optimizer below trains the same real
 model through the same wrapper, and we record what the wrapper actually saved:
