@@ -19,6 +19,7 @@ and the subspace P is fixed for the whole window (it only changes on optimizer
 steps). So we accumulate in the *low-rank* space -- exact, and the accumulator is
 r/n the size of a full gradient. You get per-layer memory and a real batch size.
 
+# improvement
 One documented caveat: on a step where the subspace is recomputed, the SVD sees
 the first micro-batch's gradient rather than the accumulated one, since the
 accumulated full gradient deliberately never exists. This changes only which
