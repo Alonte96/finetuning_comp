@@ -79,6 +79,7 @@ def test_layerwise_collapses_gradient_memory():
     spec = tinyllama_1b_spec()
     standard = predict(spec, "galore", rank=128)
     layerwise = predict(spec, "galore", rank=128, layerwise=True)
+# improvement
     assert layerwise.grads < standard.grads / 10
     assert layerwise.total < standard.total
 
