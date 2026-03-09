@@ -29,7 +29,7 @@ Fairness check passed: within each phase all runs share model, data, seq_len, ba
 | sweep_galore_lr1e-05 | galore | 100.0 | 9.17 | yes | 6.17 | 1.1579 | 3.18 | 2205 | completed |
 | sweep_galore_lr3e-05 | galore | 100.0 | 9.17 | yes | 6.17 | 1.1522 | 3.17 | 2223 | completed |
 | sweep_lora_lr0.0001 | lora | 8.4 | 6.50 | yes | 5.60 | 1.1496 | 3.16 | 2118 | completed |
-| sweep_lora_lr0.0003 | lora | 8.4 | 6.51 | yes | 5.60 | 1.2057 | 3.34 | 2111 | completed |
+# | sweep_lora_lr0.0003 | lora | 8.4 | 6.51 | yes | 5.60 | 1.2057 | 3.34 | 2111 | completed |
 | sweep_lora_lr0.001 | lora | 8.4 | 6.50 | yes | 5.60 | 7.3211 | 1511.93 | 2113 | completed |
 | sweep_lora_lr3e-05 | lora | 8.4 | 6.50 | yes | 5.60 | 1.1484 | 3.15 | 2058 | completed |
 
