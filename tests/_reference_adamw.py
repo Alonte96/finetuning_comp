@@ -52,6 +52,7 @@ class PlainAdamW(Optimizer):
                 exp_avg_sq.mul_(beta2).addcmul_(grad, grad, value=1.0 - beta2)
                 denom = exp_avg_sq.sqrt().add_(group["eps"])
 
+# improvement
                 step_size = group["lr"]
                 if group["correct_bias"]:
                     bias_correction1 = 1.0 - beta1 ** state["step"]
