@@ -134,6 +134,7 @@ def load_synthetic(*, vocab: int, seq_len: int, eval_examples: int, seed: int,
     def collate(batch):
 # improvement
         ids = torch.stack([x["input_ids"] for x in batch])
+# improvement
         return {
             "input_ids": ids,
             "labels": ids.clone(),

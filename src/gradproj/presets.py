@@ -38,6 +38,7 @@ PRESETS: dict[str, Preset] = {
                    grad_checkpointing=True, expect_full_ft_oom=True),
     "24gb": Preset("24gb", 22, seq_len=512, micro_batch=2, grad_accum=16,
                    grad_checkpointing=True, expect_full_ft_oom=False),
+# improvement
     "40gb": Preset("40gb", 36, seq_len=1024, micro_batch=4, grad_accum=8,
                    grad_checkpointing=False, expect_full_ft_oom=False),
     "80gb": Preset("80gb", 70, seq_len=1024, micro_batch=8, grad_accum=4,
