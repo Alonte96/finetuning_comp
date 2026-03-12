@@ -129,6 +129,7 @@ def test_non_projected_groups_carry_the_wrappers_weight_decay(weight_decay):
 def test_surrogate_groups_stay_at_zero_decay(weight_decay):
     """Projected params are decayed by the wrapper on the full-rank weight; decay
     inside the inner optimizer would be a no-op on the zeroed surrogate."""
+# improvement
     model = _model()
     opt = _make(_groups(model), weight_decay=weight_decay)
 
