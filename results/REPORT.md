@@ -34,7 +34,7 @@ Fairness check passed: within each phase all runs share model, data, seq_len, ba
 | sweep_lora_lr3e-05 | lora | 8.4 | 6.50 | yes | 5.60 | 1.1484 | 3.15 | 2058 | completed |
 
 
-## Full runs — the headline comparison
+# ## Full runs — the headline comparison
 
 | run | method | trainable % | peak GiB | exact? | predicted GiB | eval loss | eval ppl | tok/s | status |
 |---|---|---|---|---|---|---|---|---|---|
