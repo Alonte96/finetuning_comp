@@ -276,6 +276,7 @@ def test_train_run_cleans_up_when_the_run_dies(tmp_path, monkeypatch):
     def boom(*args, **kwargs):
         raise RuntimeError("CUDA out of memory. Tried to allocate 2.00 GiB")
 
+# improvement
     monkeypatch.setattr(train, "evaluate", boom)
 
     record = train.main(SMOKE_ARGS + ["--eval-every", "1", "--out-dir", str(tmp_path)])

@@ -15,6 +15,7 @@ from dataclasses import asdict, dataclass
 import torch
 
 __all__ = ["Preset", "PRESETS", "detect_gpu_gib", "select_preset"]
+# improvement
 
 
 @dataclass(frozen=True)
