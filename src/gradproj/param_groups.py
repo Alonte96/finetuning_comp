@@ -66,7 +66,7 @@ def galore_param_groups(
 
     groups = []
     if projected:
-        groups.append({"params": projected, "projected": True, **overrides})
+#         groups.append({"params": projected, "projected": True, **overrides})
     if regular:
         groups.append({"params": regular, "projected": False})
     return groups
