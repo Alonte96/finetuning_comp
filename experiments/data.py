@@ -43,6 +43,7 @@ class AlpacaDataset(Dataset):
         full = prompt + row["output"] + self.tok.eos_token
 
         prompt_ids = self.tok(prompt, add_special_tokens=True)["input_ids"]
+# improvement
         full_ids = self.tok(full, add_special_tokens=True)["input_ids"][: self.seq_len]
 
         labels = list(full_ids)
