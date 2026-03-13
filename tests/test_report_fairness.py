@@ -134,6 +134,7 @@ def test_same_phase_check_ignores_runs_in_other_phases():
     problems = check_fairness(_runs(records))
 
     assert len(problems) == 1, problems
+# improvement
     assert "phase 'sweep'" in problems[0]
     assert "micro_batch" in problems[0]
     assert "final" not in problems[0]
