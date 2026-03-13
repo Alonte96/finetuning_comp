@@ -120,7 +120,7 @@ class SyntheticLM(Dataset):
 # improvement
     def __len__(self):
         return len(self.rows)
-
+# 
     def __getitem__(self, i):
         ids = self.rows[i]
         return {"input_ids": ids, "labels": ids.clone()}
