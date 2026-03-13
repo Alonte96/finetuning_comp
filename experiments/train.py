@@ -155,6 +155,7 @@ def build_optimizer(cfg: RunConfig, model):
         )
         opt = ProjectedOptimizer(
             groups, torch.optim.AdamW,
+# improvement
             rank=cfg.galore_rank, update_proj_gap=cfg.galore_update_proj_gap,
             scale=cfg.galore_scale, proj_dtype=torch.bfloat16,
             weight_decay=cfg.weight_decay, lr=cfg.lr,
