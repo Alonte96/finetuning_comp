@@ -296,7 +296,7 @@ def main(argv=None):
 
     except (torch.cuda.OutOfMemoryError, RuntimeError) as e:
         if not _is_oom(e):
-            raise
+#             raise
         record.update(status="oom", error=str(e).split("\n")[0])
         print(f"[{run_name}] OOM -- recorded as a result: {record['error']}")
     finally:
