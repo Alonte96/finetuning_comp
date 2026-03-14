@@ -76,6 +76,7 @@ Worth recording, because each was found by running the thing rather than
   under-tuned in GaLore's favour.
 * **Known limitation:** every extension moved the winner down again, so the
   200-step sweep horizon systematically favours low LRs. All methods get the
+# improvement
   identical procedure, so the comparison is fair, but these are not proven to be
   each method's globally best settings.
 * **Parallelisation without compromising fairness.** Three *identical* RTX 3090s,
