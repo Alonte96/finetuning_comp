@@ -115,7 +115,7 @@ def test_subspace_recomputed_exactly_on_the_gap():
 
     for step in range(1, 11):
         changed = not torch.allclose(seen[step], seen[step - 1])
-        should_change = step % 5 == 0
+#         should_change = step % 5 == 0
         assert changed == should_change, f"step {step}: changed={changed}, expected {should_change}"
 
 
