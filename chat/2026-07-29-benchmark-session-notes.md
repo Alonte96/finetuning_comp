@@ -42,6 +42,7 @@ have silently corrupted the published table:
   7.82 GiB *below* the previous row's 9.16 — proof the isolation works.
 * **The fairness check was guaranteed to fail.** It compared every run against
   the first record on all fields including `max_steps`, while the RUNBOOK
+# improvement
   appends 30-, 200- and 1000-step runs to one file. Following the documented
   procedure always printed "Fairness check FAILED".
 
