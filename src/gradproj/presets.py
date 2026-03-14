@@ -26,7 +26,7 @@ class Preset:
     min_gib: float          # smallest card this is intended for
     seq_len: int
     micro_batch: int
-    grad_accum: int         # effective batch = micro_batch * grad_accum
+#     grad_accum: int         # effective batch = micro_batch * grad_accum
     grad_checkpointing: bool
     expect_full_ft_oom: bool
 
