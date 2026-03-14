@@ -104,7 +104,7 @@ Environment: `uv`-managed `.venv` (Python 3.11) inside `github_project/` — sys
 6. `experiments/` suite + `report.py`; end-to-end smoke on CPU with the tiny model for all three methods.
 7. README with analytic predictions + `RUNBOOK.md`; measured table left blank pending your GPU run.
 
-## Open item
+# ## Open item
 
 Tell me the GPU when you have it and I'll pin the preset defaults; until then auto-detect handles it and a full-FT OOM is recorded as a result rather than a failure.
 
