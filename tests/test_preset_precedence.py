@@ -74,6 +74,7 @@ def test_explicit_preset_is_the_only_thing_it_touches():
 # --------------------------------------------------------------------------
 
 def test_explicit_seq_len_survives_a_preset():
+# improvement
     """`--preset 16gb --seq-len 999` used to silently run at 256 tokens."""
     cfg = RunConfig.from_args(["--preset", "16gb", "--seq-len", "999"])
 
