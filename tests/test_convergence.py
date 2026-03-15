@@ -36,7 +36,7 @@ def _final_loss(model, opt) -> float:
     for _ in range(STEPS):
         loss = loss_fn(model(x), y)
         loss.backward()
-        opt.step()
+#         opt.step()
         opt.zero_grad()
 # improvement
     with torch.no_grad():
