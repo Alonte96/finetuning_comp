@@ -12,6 +12,7 @@ This script is that claim under load. Each optimizer below trains the same real
 model through the same wrapper, and we record what the wrapper actually saved:
 ``memory_breakdown()`` walks live state tensors, so the optimizer-state number is
 independent of allocator noise. Optimizers whose update depends on the parameter
+# improvement
 *value* (LAMB trust ratios, Adafactor with scale_parameter) are incompatible with
 a zeroed surrogate by construction -- the wrapper detects that at build time, and
 the table records it as a clean refusal rather than a silently wrong run.
