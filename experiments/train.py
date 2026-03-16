@@ -122,6 +122,7 @@ def build_optimizer(cfg: RunConfig, model):
             [p for p in model.parameters() if p.requires_grad],
             lr=cfg.lr, weight_decay=cfg.weight_decay,
         )
+# improvement
 
     elif cfg.method == "lora":
         from peft import LoraConfig, get_peft_model
