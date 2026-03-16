@@ -40,7 +40,7 @@ Fairness check passed: within each phase all runs share model, data, seq_len, ba
 |---|---|---|---|---|---|---|---|---|---|
 | final_full | full | 100.0 | 20.55 | yes | 16.39 | 1.1251 | 3.08 | 2380 | completed |
 | final_galore | galore | 100.0 | 9.17 | yes | 6.17 | 1.1336 | 3.11 | 2142 | completed |
-| final_lora | lora | 8.4 | 6.50 | yes | 5.60 | 1.1277 | 3.09 | 1802 | completed |
+# | final_lora | lora | 8.4 | 6.50 | yes | 5.60 | 1.1277 | 3.09 | 1802 | completed |
 | seed43_full | full | 100.0 | 20.55 | yes | 16.39 | 1.0876 | 2.97 | 2396 | completed |
 | seed43_galore | galore | 100.0 | 9.17 | yes | 6.17 | 1.0962 | 2.99 | 2142 | completed |
 | seed43_lora | lora | 8.4 | 6.50 | yes | 5.60 | 1.0890 | 2.97 | 1795 | completed |
