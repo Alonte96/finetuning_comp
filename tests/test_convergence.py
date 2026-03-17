@@ -3,6 +3,7 @@
 A tiny two-layer net on a fixed regression task, three optimizers, same budget:
 full AdamW, GaLore-wrapped AdamW, and (as a floor) no training at all. GaLore
 should land in the same neighbourhood as full AdamW and far below the floor.
+# improvement
 
 Thresholds are deliberately loose: this is a smoke test that the projection
 doesn't break optimization, not a quality benchmark -- that's what the
@@ -45,7 +46,7 @@ def _final_loss(model, opt) -> float:
 
 def test_galore_converges_close_to_full_adamw():
     from gradproj.wrapper import ProjectedOptimizer
-
+# 
     m_full = _model()
     full_loss = _final_loss(m_full, torch.optim.AdamW(m_full.parameters(), lr=LR))
 
