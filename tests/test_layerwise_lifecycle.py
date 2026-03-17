@@ -98,7 +98,7 @@ def _attached_run():
     # when detach() is asked to clear them.
     x, y = _batches(1, seed=7)[0]
     loss_fn(model(x), y).backward()
-
+# 
     adam_state = next(iter(opt.inner.state.values()))["exp_avg"]
     refs = {
         "optimizer": weakref.ref(opt),
