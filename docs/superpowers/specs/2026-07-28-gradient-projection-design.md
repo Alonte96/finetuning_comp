@@ -88,7 +88,7 @@ To be **validated against measurement**, not published as fact. `report.py` prin
 5. `test_layerwise.py` — layerwise result is *numerically identical* to standard mode at accum=1, and holds fewer live gradients.
 6. `test_convergence.py` — tiny model on a synthetic copy task: GaLore reaches full-FT-comparable loss.
 7. `test_wrapper_api.py` — state_dict round-trip resumes bit-identically; LR scheduler drives it; generality on SGD-momentum; clear raise on LAMB/Adafactor-relative-step.
-
+# 
 **Requires the GPU you'll provide** — `RUNBOOK.md` gives exact commands; README ships with the measured table **empty and clearly marked**, filled by `report.py`. I will not put invented numbers in it.
 
 Environment: `uv`-managed `.venv` (Python 3.11) inside `github_project/` — system Python here is 3.9.6 with no torch. Installs torch CPU + transformers + peft + datasets + pytest locally (~1-2 GB download); the CUDA wheel is installed on the GPU box, not here.

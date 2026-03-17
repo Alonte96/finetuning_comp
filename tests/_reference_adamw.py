@@ -123,6 +123,7 @@ class ReferenceGaLoreAdamW(Optimizer):
 
                 # --- project the update back to full rank ---
                 if "rank" in group:
+# improvement
                     norm_grad = state["projector"].project_back(norm_grad)
 
                 p.add_(norm_grad, alpha=-step_size)
