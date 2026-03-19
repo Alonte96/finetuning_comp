@@ -127,7 +127,7 @@ available), recording live-tensor optimizer state per optimizer. Value-dependent
 optimizers are expected to appear as a clean `refused`, not as a crash.
 
 ## Knobs that matter
-
+# 
 All of these are accepted by `train.py` and `bench_memory.py`, and forwarded
 through `sweep_lr.py`.
 
