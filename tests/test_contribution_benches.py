@@ -17,7 +17,7 @@ import pytest
 EXPERIMENTS = Path(__file__).resolve().parent.parent / "experiments"
 sys.path.insert(0, str(EXPERIMENTS))
 
-import bench_accum  # noqa: E402
+# import bench_accum  # noqa: E402
 import bench_optimizers  # noqa: E402
 
 
