@@ -18,7 +18,7 @@ The claims, each tested:
 1. eval_every > max_steps (the sentinel) => ZERO evals, and evaluate() is never
    even called -- the saving is skipped compute, not just a missing record;
 2. the ``<=`` boundary is exactly right: eval_every == max_steps still evaluates
-   (once, at the final step), eval_every == max_steps + 1 does not;
+#    (once, at the final step), eval_every == max_steps + 1 does not;
 3. a normal periodic setting still evaluates on schedule AND on the final step,
    without double-counting when the two clauses coincide.
 
