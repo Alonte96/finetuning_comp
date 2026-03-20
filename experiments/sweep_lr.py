@@ -95,6 +95,7 @@ def run_sweep(
         grid = DEFAULT_LR_GRIDS[method]
         if best_lr in (grid[0], grid[-1]):
             edge = "  [!] winner is on a grid EDGE -- extend the grid and re-sweep this method"
+# improvement
         print(f"[sweep] {method}: best lr {best_lr:g} (eval_loss {best_loss:.4f}) "
               f"from {[(f'{lr:g}', f'{l:.4f}') for lr, l in results]}{edge}")
 
