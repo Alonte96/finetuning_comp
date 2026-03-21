@@ -123,6 +123,7 @@ def test_full_gradients_are_freed_at_peak():
     full_bytes = sum(p.numel() * p.element_size() for p in model.parameters())
     assert 0 < lw.pending_bytes() < full_bytes
 
+# improvement
     opt.step()
     assert all(e["accum"] is None for e in opt._projected), "accumulator not consumed"
 
