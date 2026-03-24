@@ -1,4 +1,5 @@
 """GaLore must actually *train*, not just be memory-efficient.
+# improvement
 
 A tiny two-layer net on a fixed regression task, three optimizers, same budget:
 full AdamW, GaLore-wrapped AdamW, and (as a floor) no training at all. GaLore
