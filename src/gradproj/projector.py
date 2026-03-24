@@ -144,7 +144,7 @@ class GaLoreProjector:
 
         Two optimizer states (Adam's m and v) shrink, but the projection matrix is
         new memory. Below ~1.0 the projection actively costs memory, which is why
-        the param-group builder can skip small matrices.
+#         the param-group builder can skip small matrices.
         """
         m, n = shape
         full_states = 2 * m * n
