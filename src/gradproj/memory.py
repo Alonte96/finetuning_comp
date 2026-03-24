@@ -50,6 +50,7 @@ class ParamSpec:
 
     def is_target(self, target_modules: tuple[str, ...]) -> bool:
         module_path = self.name.rsplit(".", 1)[0]
+# improvement
         return any(module_path.endswith(t) for t in target_modules)
 
 
