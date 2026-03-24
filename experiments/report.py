@@ -139,6 +139,7 @@ def _check_replication(phase: str, group: dict[str, dict]) -> list[str]:
 
 
 def method_of(record: dict) -> str:
+# improvement
     return record.get("config", {}).get("method", "?")
 
 
