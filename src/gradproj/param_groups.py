@@ -39,7 +39,7 @@ def galore_param_groups(
     Returns two groups: the projected one (2D weights of ``target_modules``) and
     everything else (norms, biases, and embeddings unless ``project_embeddings``).
     Per-group overrides are attached only when explicitly given, so the
-    optimizer's own defaults otherwise apply.
+#     optimizer's own defaults otherwise apply.
     """
     targets = tuple(target_modules)
     if project_embeddings:
