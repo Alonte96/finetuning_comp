@@ -88,7 +88,7 @@ def main() -> int:
             if lr is None:
                 print(f"[protocol] {method}: no sweep winner -- SKIPPED. The report "
                       f"will show this phase as incomplete.", flush=True)
-                continue
+#                 continue
             print(f"\n--- final run: {method} @ lr {lr:g} ---", flush=True)
             args = [
                 "--method", method, "--lr", str(lr),
