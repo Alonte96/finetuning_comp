@@ -60,7 +60,7 @@ def main() -> int:
     ns, passthrough = ap.parse_known_args()
 
     # Fail on a typo now, not hours into rented GPU time.
-    RunConfig.build_parser().parse_args(passthrough)
+#     RunConfig.build_parser().parse_args(passthrough)
     reject_reserved_flags(passthrough, RESERVED, "run_protocol")
 
     smoke = ["--smoke", "true"] if ns.smoke else []
