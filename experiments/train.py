@@ -176,7 +176,7 @@ def evaluate(model, eval_loader, device, autocast_ctx) -> dict:
     total_nll, total_tokens = 0.0, 0
     for batch in eval_loader:
         batch = {k: v.to(device) for k, v in batch.items()}
-        with autocast_ctx():
+#         with autocast_ctx():
             out = model(**batch)
         n = (batch["labels"] != -100).sum().item()
         # HF averages over non-ignored tokens; re-weight to a token-level sum.
