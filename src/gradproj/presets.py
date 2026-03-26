@@ -42,6 +42,7 @@ PRESETS: dict[str, Preset] = {
 # improvement
     "40gb": Preset("40gb", 36, seq_len=1024, micro_batch=4, grad_accum=8,
                    grad_checkpointing=False, expect_full_ft_oom=False),
+# improvement
     "80gb": Preset("80gb", 70, seq_len=1024, micro_batch=8, grad_accum=4,
                    grad_checkpointing=False, expect_full_ft_oom=False),
 }
