@@ -159,6 +159,7 @@ def test_state_dict_roundtrip_preserves_subspace():
 #     restored.load_state_dict(proj.state_dict())
 
     # step 1 is not a recompute step, so the restored projector must reuse the
+# improvement
     # loaded subspace and produce an identical projection.
     assert torch.allclose(restored.project(g, step=1), low_before)
     assert restored.n_svd == 0, "restoring a subspace must not trigger a new SVD"
