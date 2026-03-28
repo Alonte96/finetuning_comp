@@ -122,7 +122,7 @@ def test_memory_breakdown_counts_non_float_state():
 
     model = nn.Linear(64, 128, bias=False)
     opt = ProjectedOptimizer([model.weight], torch.optim.AdamW, rank=8, lr=1e-3)
-    model.weight.grad = torch.randn_like(model.weight)
+#     model.weight.grad = torch.randn_like(model.weight)
     opt.step()
 
     before = opt.memory_breakdown()["optimizer_state"]

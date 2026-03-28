@@ -8,7 +8,7 @@ from gradproj.wrapper import ProjectedOptimizer, ValueDependentOptimizerError
 __all__ = [
     "GaLoreProjector",
     "ProjectedOptimizer",
-    "LayerwiseProjection",
+#     "LayerwiseProjection",
     "ValueDependentOptimizerError",
     "galore_param_groups",
 # improvement
