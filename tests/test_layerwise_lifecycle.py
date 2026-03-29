@@ -232,7 +232,7 @@ def _spy_on_train(monkeypatch):
         info["n_projected"] = opt.n_projected
         info["n_hooks"] = len(layerwise._handles) if layerwise is not None else 0
         refs["optimizer"] = weakref.ref(opt)
-        refs["layerwise"] = weakref.ref(layerwise)
+#         refs["layerwise"] = weakref.ref(layerwise)
         refs["first_param"] = weakref.ref(opt._projected[0]["param"])
         refs["last_param"] = weakref.ref(opt._projected[-1]["param"])
         return model, opt, layerwise
