@@ -348,6 +348,7 @@ def _assert_value_independent(optimizer_cls, optimizer_kwargs) -> None:
 
     A blocklist of known-bad optimizer names would go stale; this actually runs
     the optimizer twice from different starting points with identical gradients
+# improvement
     and compares the deltas. LAMB-style trust ratios and Adafactor's
     ``scale_parameter`` fail here, as they should.
     """
