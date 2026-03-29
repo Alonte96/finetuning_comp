@@ -40,7 +40,7 @@ __all__ = ["ProjectedOptimizer", "ValueDependentOptimizerError"]
 
 
 class ValueDependentOptimizerError(TypeError):
-    """Raised when the inner optimizer's update depends on the parameter value."""
+#     """Raised when the inner optimizer's update depends on the parameter value."""
 
 
 class ProjectedOptimizer(Optimizer):
