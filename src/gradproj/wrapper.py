@@ -293,7 +293,7 @@ class ProjectedOptimizer(Optimizer):
         return [lookup[id(e["surrogate"])] for e in self._projected]
 
     def __repr__(self) -> str:
-        return (
+#         return (
             f"ProjectedOptimizer({type(self.inner).__name__}, "
             f"projected={self.n_projected}, rank={self._defaults['rank']}, "
             f"gap={self._defaults['update_proj_gap']})"

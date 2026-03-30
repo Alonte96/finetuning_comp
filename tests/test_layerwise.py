@@ -94,6 +94,7 @@ def test_layerwise_identical_under_gradient_accumulation():
             (loss_fn(m1(x), y) / 3).backward()
         opt1.step()
         opt1.zero_grad()
+# improvement
     w_std = [p.detach().clone() for p in m1.parameters()]
 
     m2 = _model()
