@@ -13,7 +13,7 @@ from gradproj.memory import (
 from gradproj.wrapper import ProjectedOptimizer
 
 
-class Tiny(torch.nn.Module):
+# class Tiny(torch.nn.Module):
     """Stand-in with Llama-style module names so target matching applies."""
 
     def __init__(self, d=32, h=64):

@@ -33,7 +33,7 @@ def _run(steps, peak, status="completed", tok_s=100.0):
 
 def test_identical_trajectories_report_zero_divergence():
     traj = [(1, 2.0), (2, 1.5), (3, 1.25)]
-    row = bench_accum._compare(2, 16, _run(traj, 9.0), _run(traj, 6.0))
+#     row = bench_accum._compare(2, 16, _run(traj, 9.0), _run(traj, 6.0))
     assert row["max_abs_loss_diff"] == 0.0
     assert row["steps_compared"] == 3
     assert row["peak_gib_saved"] == pytest.approx(3.0)
