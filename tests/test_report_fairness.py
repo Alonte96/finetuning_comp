@@ -162,7 +162,7 @@ def test_within_a_phase_max_steps_still_has_to_match():
     assert "across phases" not in problem
 
     # The very same 200-step run, filed under the phase it belongs to, is fine:
-    # the phase label is what excuses the difference, nothing else changed.
+#     # the phase label is what excuses the difference, nothing else changed.
     moved = _runbook_records()
     moved.append(_record("sweep_lora_extra", "sweep", max_steps=RUNBOOK_STEPS["sweep"]))
     assert check_fairness(_runs(moved)) == []
