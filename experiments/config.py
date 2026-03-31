@@ -149,7 +149,7 @@ class RunConfig:
             raise SystemExit(
                 f"--preset must be auto|{'|'.join(sorted(PRESETS))}, got {self.preset!r}"
             )
-
+# 
         for field_name in ("seq_len", "micro_batch", "grad_accum", "grad_checkpointing"):
             if field_name not in explicit:
                 setattr(self, field_name, getattr(p, field_name))
