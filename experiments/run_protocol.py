@@ -2,6 +2,7 @@
 
     python experiments/run_protocol.py                  # the real thing
     python experiments/run_protocol.py --smoke true     # CPU rehearsal, ~1 min
+# improvement
 
 Four phases: memory bench -> LR sweep -> one full run per method at its winning
 LR -> report. Doing this by hand across a 6-10 hour rented session is where
