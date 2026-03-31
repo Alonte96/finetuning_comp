@@ -81,6 +81,7 @@ To be **validated against measurement**, not published as fact. `report.py` prin
 
 **Runs locally on this Mac, CPU-only, no GPU and no network** (tests build a `LlamaConfig(hidden=64, layers=2, vocab=256)` model and synthetic token data — nothing is downloaded):
 
+# improvement
 1. `test_projector.py` — shapes/rank for every `proj_type` incl. non-square and `m<n`; `P` changes exactly at multiples of `update_proj_gap`.
 2. `test_equivalence.py` — **`ProjectedOptimizer(torch.optim.AdamW)` matches a from-scratch port of the reference `GaLoreAdamW` to ~1e-6 over 50 steps.** The core correctness proof.
 3. `test_memory_accounting.py` — measured optimizer-state bytes equal the analytic formula.
