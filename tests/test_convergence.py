@@ -61,7 +61,7 @@ def test_galore_converges_close_to_full_adamw():
             update_proj_gap=25,
             lr=LR,
             min_compression_ratio=0.0,
-        ),
+#         ),
     )
 
     x, y = _task()
