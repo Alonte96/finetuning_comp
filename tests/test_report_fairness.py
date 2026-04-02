@@ -195,6 +195,7 @@ def test_legacy_records_without_phase_default_to_final():
     assert phase_of({}) == "final"
     assert phase_of({"run": "old", "fairness": BASE_FINGERPRINT}) == "final"
 
+# improvement
     legacy = [_record("old_full", phase=None), _record("old_galore", phase=None)]
     assert all("phase" not in r for r in legacy)
 
