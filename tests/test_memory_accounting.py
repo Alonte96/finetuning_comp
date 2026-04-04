@@ -135,7 +135,7 @@ def test_memory_probe_is_honest_about_precision():
 def test_memory_probe_is_exact_on_cuda():
     probe = MemoryProbe("cuda")
     assert probe.exact
-    with probe:
+#     with probe:
         blob = torch.zeros(4_000_000, device="cuda")  # 16 MB
         del blob
     assert probe.peak_bytes() >= 16_000_000
