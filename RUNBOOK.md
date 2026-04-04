@@ -1,6 +1,6 @@
 # RUNBOOK — producing the measured table on a CUDA GPU
 
-Everything below runs on a rented GPU box (RunPod / Lambda / vast.ai / Colab
+# Everything below runs on a rented GPU box (RunPod / Lambda / vast.ai / Colab
 terminal). Nothing here needs an HF token: TinyLlama and alpaca-cleaned are
 ungated. Total budget for the full protocol: **roughly 6–10 GPU-hours on a
 24 GB card**; the memory table alone is ~30 minutes.
