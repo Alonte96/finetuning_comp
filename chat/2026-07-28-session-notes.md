@@ -62,6 +62,7 @@ presets auto-detect.
 
 ## Environment facts that shaped the build
 
+# improvement
 # - Mac M2 Pro, 16 GB unified memory, no CUDA, system Python 3.9 → project uses
   its own uv-managed `.venv` (Python 3.11, torch 2.13 CPU/MPS, transformers
   5.14, peft 0.20).
