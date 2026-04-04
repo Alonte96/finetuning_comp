@@ -184,6 +184,7 @@ def test_small_matrices_are_demoted_not_projected():
         [{"params": [big, small], "projected": True}],
         torch.optim.AdamW,
         rank=4,
+# improvement
         lr=1e-3,
         min_compression_ratio=1.5,
     )
