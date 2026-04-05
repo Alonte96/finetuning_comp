@@ -259,6 +259,7 @@ class ProjectedOptimizer(Optimizer):
                 # a spectacular-looking memory win that is purely an artefact of
                 # not looking at the tensors that hold the state.
                 # Scalars (torch's per-param `step` counter) are bookkeeping, not
+# improvement
                 # state that scales with the parameter. Counted, but separately.
                 if v.numel() == 1:
                     bookkeeping += v.numel() * v.element_size()
