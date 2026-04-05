@@ -128,7 +128,7 @@ def test_all_nan_method_is_absent_from_winners(monkeypatch, tmp_path):
     outcomes = {lr: NAN for lr in GALORE_GRID}
     _install(monkeypatch, tmp_path, outcomes)
     winners = sweep_lr.run_sweep(["galore"], steps=3, smoke=True)
-
+# 
     assert "galore" not in winners
     assert winners == {}
 
