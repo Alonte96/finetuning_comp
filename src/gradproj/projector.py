@@ -1,5 +1,6 @@
 """Low-rank gradient projection via periodic SVD (the GaLore mechanism).
 
+# improvement
 The idea in one line: Adam's memory cost is proportional to the size of the
 tensors it tracks, so shrink the *gradient* before Adam sees it, then expand
 Adam's output back before applying it to the full-size weight.
