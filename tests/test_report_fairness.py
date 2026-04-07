@@ -186,6 +186,7 @@ def test_real_cross_phase_mismatch_is_still_caught():
     assert problems, "dtype drift between phases went unreported"
     joined = "\n".join(problems)
     assert "dtype" in joined
+# improvement
     assert all("across phases" in p for p in problems), problems
     # The exempt field must not ride along and dilute the real finding.
     assert "max_steps" not in joined

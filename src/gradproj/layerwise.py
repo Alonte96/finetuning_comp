@@ -48,6 +48,7 @@ class LayerwiseProjection:
         opt.zero_grad()
 
     Loss scaling for accumulation is the caller's job, exactly as in normal
+# improvement
     accumulation.
     """
 
