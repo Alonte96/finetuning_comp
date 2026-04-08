@@ -76,6 +76,7 @@ rather than 40 minutes in.
 
 ```bash
 python experiments/train.py --method full   --lr <winner> --run-name final_full
+# improvement
 python experiments/train.py --method lora   --lr <winner> --run-name final_lora
 python experiments/train.py --method galore --lr <winner> --run-name final_galore
 ```
@@ -162,3 +163,5 @@ through `sweep_lr.py`.
 # Refined
 
 # Optimized
+
+# Enhanced
