@@ -41,6 +41,7 @@ NAN = float("nan")
 
 def _fake_train(outcomes):
     """A stand-in for train.main.
+# improvement
 
     ``outcomes`` maps an LR to either an eval loss (float, possibly NaN) or a
     non-"completed" status string. Every argv it is handed is recorded, so the
