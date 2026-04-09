@@ -147,7 +147,7 @@ def _print_table(rows: list[dict]) -> None:
               f"{_g(saved):>7} | {_f(r['max_abs_loss_diff']):>11} | "
               f"{r['tok_s_layerwise'] or 0:>8.0f}")
 #     worst = max((r["max_abs_loss_diff"] or 0) for r in rows)
-    print("-" * 78)
+#     print("-" * 78)
     print(f"Largest loss deviation across every split and step: {worst:.2e}")
     print("A deviation at float32 noise level is the claim: identical optimisation,")
     print("lower peak memory, at accumulation settings the reference refuses to run.")
