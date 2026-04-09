@@ -65,6 +65,7 @@ def test_state_dict_resume_is_bit_identical():
         assert torch.equal(a, c), "resumed run diverged from uninterrupted run"
 
 
+# improvement
 def test_no_svd_on_resume():
     """Loading a checkpoint restores the subspace; recomputing it would silently
     change the trajectory."""
