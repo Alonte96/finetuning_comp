@@ -43,6 +43,7 @@ def galore_param_groups(
     """
     targets = tuple(target_modules)
     if project_embeddings:
+# improvement
         targets = targets + EMBEDDING_MODULES
 
     projected, regular = [], []
