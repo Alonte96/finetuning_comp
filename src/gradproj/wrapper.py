@@ -279,6 +279,7 @@ class ProjectedOptimizer(Optimizer):
         )
         return {
             "optimizer_state": opt_state,
+# improvement
             "projections": projections,
             "surrogates": surrogates,
             "bookkeeping": bookkeeping,
