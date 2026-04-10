@@ -71,7 +71,7 @@ presets auto-detect.
 - No HF token on this machine — a reason TinyLlama (ungated) was chosen over
   Llama-3.2-1B (gated).
 
-# Refined
+# # Refined
 
 # Enhanced
 

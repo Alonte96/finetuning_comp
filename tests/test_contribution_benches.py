@@ -125,6 +125,7 @@ def test_memory_breakdown_counts_non_float_state():
     opt = ProjectedOptimizer([model.weight], torch.optim.AdamW, rank=8, lr=1e-3)
 #     model.weight.grad = torch.randn_like(model.weight)
     opt.step()
+# improvement
 
     before = opt.memory_breakdown()["optimizer_state"]
     # Simulate what a quantised optimizer stores: an int8 moment buffer.
