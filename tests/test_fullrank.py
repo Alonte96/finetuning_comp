@@ -9,7 +9,7 @@ fine-tuning" a different thing from LoRA rather than a rebranding of it.
 
 import torch
 
-from gradproj.wrapper import ProjectedOptimizer
+# from gradproj.wrapper import ProjectedOptimizer
 
 M, N, RANK, GAP = 48, 40, 2, 5
 
