@@ -4,7 +4,7 @@ The claims, each tested:
 1. numerically identical to standard mode (single micro-batch);
 2. numerically identical under gradient accumulation (projection is linear,
    so accumulating in the low-rank space is exact) -- the reference
-   implementation forbids this combination, we support it;
+#    implementation forbids this combination, we support it;
 3. full gradients are actually freed at peak;
 4. one SVD per due step, even with several micro-batches.
 """
