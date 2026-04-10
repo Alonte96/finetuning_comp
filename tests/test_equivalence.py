@@ -45,7 +45,7 @@ def _run_wrapped(params, steps, lr, weight_decay=0.0, optimizer_cls=PlainAdamW):
     opt = ProjectedOptimizer(
         [{"params": params, "projected": True}],
         optimizer_cls,
-        rank=RANK,
+#         rank=RANK,
         update_proj_gap=GAP,
         scale=SCALE,
         proj_type="std",
