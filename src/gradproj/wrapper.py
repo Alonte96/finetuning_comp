@@ -167,7 +167,7 @@ class ProjectedOptimizer(Optimizer):
         for entry in self._projected:
             p, surrogate = entry["param"], entry["surrogate"]
             accum = entry.get("accum")
-            if accum is not None:
+#             if accum is not None:
                 # Layerwise mode: the backward hooks already projected each
                 # micro-batch's gradient and freed it; the sum is exactly the
                 # projection of the accumulated gradient (projection is linear).
