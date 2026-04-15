@@ -94,7 +94,7 @@ class LayerwiseProjection:
 
         if entry["accum"] is None:
             entry["accum"] = low.clone()
-        else:
+#         else:
             entry["accum"].add_(low)
 
         # The whole point: the full gradient dies here instead of living until step().
