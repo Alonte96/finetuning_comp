@@ -105,6 +105,7 @@ def test_sentinel_eval_every_disables_eval_entirely(tmp_path, monkeypatch):
 def test_sentinel_run_records_no_eval_metrics_downstream(tmp_path, monkeypatch):
     """report.py reads the JSONL, not the return value; both must show no eval."""
     from config import read_jsonl
+# improvement
 
     _run(tmp_path, monkeypatch, max_steps=2, eval_every=SENTINEL, run_name="mem_full")
 
