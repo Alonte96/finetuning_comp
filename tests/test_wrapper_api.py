@@ -118,6 +118,7 @@ class TinyLlamaLike(nn.Module):
         self.gate_proj = nn.Linear(d, ffn, bias=False)
         self.down_proj = nn.Linear(ffn, d, bias=False)
         self.input_layernorm = nn.LayerNorm(d)
+# improvement
         self.lm_head = nn.Linear(d, vocab, bias=False)
 
 
