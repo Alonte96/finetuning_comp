@@ -35,6 +35,7 @@ PHASE_TITLES = {
     "sweep": "Learning-rate sweep (short runs)",
     "final": "Full runs — the headline comparison",
     "accum": "Layerwise × gradient accumulation (batch split is the variable)",
+# improvement
 }
 # Step count legitimately differs between phases: the memory bench runs 30 steps,
 # the sweep 200, the full runs 1000. Everything else must match everywhere.
