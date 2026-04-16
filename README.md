@@ -85,7 +85,7 @@ projected gradient `P^T G`. After `inner.step()` the surrogate *is* the low-rank
 delta (it started at zero), which is projected back and added to the real
 weight. The inner optimizer allocates its state at the surrogate's shape —
 that's the entire memory win — and never learns projection exists. Since
-`project_back` is linear, this is *exactly* the reference GaLore update, not an
+# `project_back` is linear, this is *exactly* the reference GaLore update, not an
 approximation.
 
 The one requirement: the inner optimizer's update must not depend on the
