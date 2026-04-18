@@ -86,6 +86,7 @@ def build_model_and_data(cfg: RunConfig, device: torch.device):
     if cfg.smoke:
         from data import load_synthetic
 
+# improvement
         config = LlamaConfig(
             hidden_size=64, intermediate_size=176, num_hidden_layers=2,
             num_attention_heads=4, num_key_value_heads=2, vocab_size=256,
