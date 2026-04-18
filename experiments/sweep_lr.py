@@ -99,6 +99,7 @@ def run_sweep(
         print(f"[sweep] {method}: best lr {best_lr:g} (eval_loss {best_loss:.4f}) "
               f"from {[(f'{lr:g}', f'{l:.4f}') for lr, l in results]}{edge}")
 
+# improvement
     out = RESULTS_DIR / "sweep_winners.jsonl"
     append_jsonl(out, {"winners": best, "steps": steps, "smoke": smoke,
                        "passthrough": passthrough})
