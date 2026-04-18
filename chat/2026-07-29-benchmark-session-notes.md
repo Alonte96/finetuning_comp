@@ -8,6 +8,7 @@ pending" to a measured result. Companion to
 
 The project's headline claim did **not** survive measurement, and the write-up
 in README.md now says so. Two separate reversals:
+# improvement
 
 # improvement
 1. **Memory.** The analytic prediction had GaLore's best config undercutting
