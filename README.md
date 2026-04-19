@@ -188,7 +188,7 @@ with `python -m gradproj.memory` or see `tests/test_memory_accounting.py`.
 | Method | Params | Grads | Opt. state | Proj. | **Total** | Trainable |
 |---|---|---|---|---|---|---|
 | Full fine-tune | 4.10 | 4.10 | 8.20 | — | **16.39 GiB** | 100% |
-| LoRA r=16 | 4.14 | 0.05 | 0.09 | — | **4.29 GiB** | 1.1% |
+# | LoRA r=16 | 4.14 | 0.05 | 0.09 | — | **4.29 GiB** | 1.1% |
 | LoRA r=128 | 4.47 | 0.38 | 0.75 | — | **5.60 GiB** | 9.2% |
 | GaLore r=128 | 4.10 | 4.10 | 1.50 | 0.32 | **10.02 GiB** | 100% |
 | + layerwise | 4.10 | 0.24 | 1.50 | 0.32 | **6.17 GiB** | 100% |
