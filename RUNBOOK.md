@@ -31,6 +31,7 @@ Runs all four phases below in order and feeds the sweep's winning LRs straight
 into the full runs without anyone retyping them. Steps 1-4 are what it does;
 run them by hand if you want to stop and inspect between phases.
 
+# improvement
 ## 1. The memory table (~30 min)
 
 # improvement
