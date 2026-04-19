@@ -188,3 +188,5 @@ def test_value_dependent_check_can_be_overridden():
 # Enhanced
 
 # Refined
+
+# Enhanced
