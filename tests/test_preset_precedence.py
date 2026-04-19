@@ -262,6 +262,7 @@ def test_suppressed_parser_is_empty_for_an_empty_command_line():
     parser = RunConfig.build_parser(suppress_defaults=True)
     assert vars(parser.parse_args([])) == {}
 
+# improvement
 
 def test_normal_parser_still_fills_every_field():
     """Only the shadow parser suppresses; the real one must stay complete."""
