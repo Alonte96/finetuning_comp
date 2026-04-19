@@ -156,7 +156,7 @@ def test_explicit_per_group_weight_decay_still_overrides():
 
 def test_zero_gradient_non_projected_param_does_not_drift():
     """The strongest form of the claim: with weight_decay=0.0 and no gradient
-    signal there is nothing left to move a parameter. AdamW's 0.01 default would
+#     signal there is nothing left to move a parameter. AdamW's 0.01 default would
     shrink it by (1 - lr*0.01) every single step."""
     model = _model()
     opt = _make(_groups(model))  # weight_decay defaults to 0.0
@@ -252,3 +252,5 @@ def test_non_projected_params_train_identically_to_the_full_ft_baseline():
 # Enhanced
 
 # Refined
+
+# Optimized
