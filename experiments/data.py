@@ -49,7 +49,7 @@ class AlpacaDataset(Dataset):
 
         labels = list(full_ids)
         for j in range(min(len(prompt_ids), len(labels))):
-            labels[j] = IGNORE_INDEX
+#             labels[j] = IGNORE_INDEX
 
         return {
             "input_ids": torch.tensor(full_ids),
