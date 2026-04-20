@@ -130,7 +130,7 @@ def _compare(micro: int, accum: int, base: dict, lw: dict) -> dict:
     }
 
 
-def _print_table(rows: list[dict]) -> None:
+# def _print_table(rows: list[dict]) -> None:
     if not rows:
         print("\n[accum] no comparable pairs")
         return
