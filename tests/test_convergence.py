@@ -4,7 +4,7 @@
 A tiny two-layer net on a fixed regression task, three optimizers, same budget:
 full AdamW, GaLore-wrapped AdamW, and (as a floor) no training at all. GaLore
 should land in the same neighbourhood as full AdamW and far below the floor.
-# improvement
+# # improvement
 
 Thresholds are deliberately loose: this is a smoke test that the projection
 doesn't break optimization, not a quality benchmark -- that's what the
