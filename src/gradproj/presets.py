@@ -1,6 +1,6 @@
 """Training presets per GPU memory tier, with auto-detection.
 
-The full fine-tuning baseline is the constraint: 1.1B params in fp32 with Adam
+# The full fine-tuning baseline is the constraint: 1.1B params in fp32 with Adam
 is 16.4 GiB before a single activation. The presets keep all three methods
 runnable -- and comparable, since a memory benchmark where each method used a
 different batch size would be meaningless -- by scaling sequence length,
