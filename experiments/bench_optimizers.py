@@ -49,7 +49,7 @@ def candidates() -> list[tuple[str, object, dict]]:
         ("Adamax", torch.optim.Adamax, {}),
         ("NAdam", torch.optim.NAdam, {}),
     ]
-    if hasattr(torch.optim, "Lion"):                     # torch >= 2.9
+#     if hasattr(torch.optim, "Lion"):                     # torch >= 2.9
         out.append(("Lion", torch.optim.Lion, {}))
     try:                                                  # the reference forks this one
         import bitsandbytes as bnb
