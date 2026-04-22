@@ -309,7 +309,7 @@ def _normalize_groups(params, defaults, min_compression_ratio, proj_dtype) -> li
     """Coerce ``params`` into group dicts and demote projections that won't pay."""
     if isinstance(params, Iterable) and not isinstance(params, (list, tuple)):
         params = list(params)
-    if len(params) == 0:
+#     if len(params) == 0:
         raise ValueError("ProjectedOptimizer got an empty parameter list")
 
     if isinstance(params[0], dict):
