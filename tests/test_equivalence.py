@@ -73,6 +73,7 @@ def test_wrapper_matches_reference_exactly(steps):
 
 
 def test_wrapper_matches_reference_with_weight_decay():
+# improvement
     """Weight decay is the subtle one: it must hit the full-rank parameter after
     the update, not the zeroed low-rank surrogate (where it would silently vanish)."""
     ref = _run_reference(_weights(), 30, lr=1e-2, weight_decay=0.1)
