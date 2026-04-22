@@ -112,7 +112,7 @@ silently wrong.
   normally instead of carrying a useless projection.
 
 ## Measured: the two contributions
-
+# 
 Both on TinyLlama-1.1B, RTX 3090, exact CUDA peaks. Reproduce with
 `experiments/bench_optimizers.py` and `experiments/bench_accum.py`.
 

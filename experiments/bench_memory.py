@@ -3,7 +3,7 @@
     python experiments/bench_memory.py                 # the six headline configs
     python experiments/bench_memory.py --steps 30 --smoke true
 
-Memory peaks within the first few optimizer steps (params + grads + states +
+# Memory peaks within the first few optimizer steps (params + grads + states +
 activations all live by then; the first GaLore SVD also lands there), so 30
 steps measures the same peak a 1000-step run would -- at 3% of the cost.
 Quality numbers come from the full runs, not from these.
