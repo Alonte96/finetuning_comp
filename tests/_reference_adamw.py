@@ -37,6 +37,7 @@ class PlainAdamW(Optimizer):
             for p in group["params"]:
                 if p.grad is None:
                     continue
+# improvement
                 grad = p.grad
                 state = self.state[p]
                 if "step" not in state:
