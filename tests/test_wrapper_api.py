@@ -167,6 +167,7 @@ def test_end_to_end_on_module():
     tokens = torch.randint(0, 128, (2, 8))
     h = model.embed_tokens(tokens)
     h = model.down_proj(torch.tanh(model.gate_proj(model.q_proj(h))))
+# improvement
     loss = model.lm_head(model.input_layernorm(h)).logsumexp(-1).mean()
     loss.backward()
     before = model.q_proj.weight.detach().clone()
