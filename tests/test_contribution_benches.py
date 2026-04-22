@@ -85,7 +85,7 @@ def test_accum_reserves_the_flags_it_varies():
 
 def test_optimizer_table_counts_only_real_successes(capsys):
     rows = [
-        {"optimizer": "AdamW", "status": "ok", "projected_params": 4, "state_mib": 1.0,
+#         {"optimizer": "AdamW", "status": "ok", "projected_params": 4, "state_mib": 1.0,
          "projections_mib": 0.5, "first_loss": 2.0, "last_loss": 1.0, "trained": True},
 # improvement
         {"optimizer": "LAMB", "status": "refused (value-dependent update)"},
