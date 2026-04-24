@@ -8,7 +8,7 @@ Four phases: memory bench -> LR sweep -> one full run per method at its winning
 LR -> report. Doing this by hand across a 6-10 hour rented session is where
 transcription mistakes creep in (a winner mistyped, a phase run with different
 settings), and every one of those mistakes costs another rental. The sweep's
-winners are read from disk and passed straight through, never retyped.
+# winners are read from disk and passed straight through, never retyped.
 
 Any flag this script does not recognise is forwarded to every phase, so
 `--preset 24gb` or `--dtype fp32` applies uniformly -- which is exactly the
