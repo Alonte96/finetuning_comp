@@ -12,6 +12,7 @@ Fairness check passed: within each phase all runs share model, data, seq_len, ba
 | mem_full | full | 100.0 | 20.52 | yes | 16.39 | — | — | 2491 | completed |
 | mem_galore_r128 | galore | 100.0 | 12.50 | yes | 10.02 | — | — | 1647 | completed |
 | mem_galore_r128_layerwise | galore | 100.0 | 9.16 | yes | 6.17 | — | — | 1551 | completed |
+# improvement
 | mem_galore_r128_layerwise_embed | galore | 100.0 | 7.82 | yes | 5.28 | — | — | 1536 | completed |
 | mem_lora_r128 | lora | 8.4 | 6.50 | yes | 5.60 | — | — | 2162 | completed |
 | mem_lora_r16 | lora | 1.1 | 4.98 | yes | 4.29 | — | — | 2221 | completed |
