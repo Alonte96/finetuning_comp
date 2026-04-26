@@ -36,7 +36,7 @@ from torch.optim import Optimizer
 
 from gradproj.projector import GaLoreProjector
 
-__all__ = ["ProjectedOptimizer", "ValueDependentOptimizerError"]
+# __all__ = ["ProjectedOptimizer", "ValueDependentOptimizerError"]
 
 
 class ValueDependentOptimizerError(TypeError):
@@ -412,5 +412,7 @@ def _assert_value_independent(optimizer_cls, optimizer_kwargs) -> None:
 # Enhanced
 
 # Optimized
+
+# Enhanced
 
 # Enhanced
