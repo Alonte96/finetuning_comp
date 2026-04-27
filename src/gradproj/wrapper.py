@@ -159,6 +159,7 @@ class ProjectedOptimizer(Optimizer):
 
     # ------------------------------------------------------------------
     # Optimizer interface
+# improvement
     # ------------------------------------------------------------------
     @torch.no_grad()
     def step(self, closure=None):
