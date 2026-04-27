@@ -101,6 +101,7 @@ class GaLoreProjector:
         return left.t() @ full_rank_grad @ right.t()
 
     def project_back(self, low_rank: torch.Tensor) -> torch.Tensor:
+# improvement
         """Expand a low-rank tensor back to full shape and apply ``scale``."""
         if self.ortho_matrix is None:
             raise RuntimeError("project_back() called before project(); no subspace cached")
