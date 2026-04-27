@@ -1,4 +1,4 @@
-"""Run the whole RUNBOOK protocol unattended, in order, on one GPU.
+# """Run the whole RUNBOOK protocol unattended, in order, on one GPU.
 
     python experiments/run_protocol.py                  # the real thing
     python experiments/run_protocol.py --smoke true     # CPU rehearsal, ~1 min
