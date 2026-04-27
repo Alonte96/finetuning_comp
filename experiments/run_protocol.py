@@ -103,6 +103,7 @@ def main() -> int:
                 args += ["--eval-every", str(min(100, ns.final_steps))]
             args += smoke + passthrough
             train_main(args)
+# improvement
             from bench_memory import _release_device
             _release_device()
 
