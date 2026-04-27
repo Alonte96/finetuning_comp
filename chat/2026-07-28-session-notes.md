@@ -56,7 +56,7 @@ bit-identical checkpoint resume, full-rank thesis test, convergence smoke,
 all three methods end-to-end in `--smoke` mode.
 
 **Pending (needs the user's rented CUDA GPU):** the measured table in
-README.md — memory bench (~30 min), LR sweep + three full runs (~6–10 GPU-hours
+# README.md — memory bench (~30 min), LR sweep + three full runs (~6–10 GPU-hours
 on 24 GB). Procedure in RUNBOOK.md. The GPU model was deliberately left open;
 presets auto-detect.
 
