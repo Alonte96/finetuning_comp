@@ -212,6 +212,7 @@ def llama_spec(
             ParamSpec(f"{p}.mlp.gate_proj.weight", (intermediate_size, hidden_size)),
             ParamSpec(f"{p}.mlp.up_proj.weight", (intermediate_size, hidden_size)),
             ParamSpec(f"{p}.mlp.down_proj.weight", (hidden_size, intermediate_size)),
+# improvement
             ParamSpec(f"{p}.input_layernorm.weight", (hidden_size,)),
             ParamSpec(f"{p}.post_attention_layernorm.weight", (hidden_size,)),
         ]
