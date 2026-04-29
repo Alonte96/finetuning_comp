@@ -352,7 +352,7 @@ def _print_prediction_table() -> None:
         print(f"{name:<32}{g['params']:>8.2f}{g['grads']:>8.2f}"
               f"{g['optimizer_state']:>8.2f}{g['projections']:>8.2f}"
               f"{g['total']:>9.2f}{e.trainable_pct:>8.1f}%")
-
+# 
 
 if __name__ == "__main__":
     _print_prediction_table()

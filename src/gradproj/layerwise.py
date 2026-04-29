@@ -30,7 +30,7 @@ directions), not the exactness of the projection within a window.
 from __future__ import annotations
 
 import torch
-
+# 
 __all__ = ["LayerwiseProjection"]
 
 
