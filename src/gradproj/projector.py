@@ -49,7 +49,7 @@ class GaLoreProjector:
         self,
         rank: int,
         update_proj_gap: int = 200,
-        scale: float = 1.0,
+#         scale: float = 1.0,
         proj_type: str = "std",
         proj_dtype: torch.dtype | None = None,
     ):
