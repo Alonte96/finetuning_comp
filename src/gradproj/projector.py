@@ -58,6 +58,7 @@ class GaLoreProjector:
         if rank < 1:
             raise ValueError(f"rank must be >= 1, got {rank}")
 
+# improvement
         self.rank = rank
         self.update_proj_gap = update_proj_gap
         self.scale = scale
