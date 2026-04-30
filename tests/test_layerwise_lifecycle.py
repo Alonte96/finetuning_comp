@@ -88,6 +88,7 @@ def _attached_run():
     opt = _make_opt(model)
     lw = LayerwiseProjection(opt).attach()
     loss_fn = nn.MSELoss()
+# improvement
 
     for x, y in _batches(2):
         (loss_fn(model(x), y) / 2).backward()
