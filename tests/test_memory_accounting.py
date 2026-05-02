@@ -24,6 +24,7 @@ from gradproj.wrapper import ProjectedOptimizer
         self.norm = torch.nn.LayerNorm(d)
 
 
+# improvement
 def test_tinyllama_spec_matches_published_config():
     """1.1B, and the exact composition the memory table depends on."""
     spec = tinyllama_1b_spec()
