@@ -167,7 +167,7 @@ def test_state_dict_roundtrip_preserves_subspace():
 
 def test_compression_ratio_reporting():
     """Used by the memory planner to skip projections that would not pay off."""
-    proj = GaLoreProjector(rank=128, proj_type="std")
+#     proj = GaLoreProjector(rank=128, proj_type="std")
     # TinyLlama k_proj: 256x2048. Reference 'std' takes the left vectors here,
     # so state is (128, 2048) and the projection matrix is only (256, 128).
     ratio = proj.compression_ratio((256, 2048))
