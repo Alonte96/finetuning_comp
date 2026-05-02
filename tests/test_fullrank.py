@@ -3,6 +3,7 @@
 LoRA's total update is B @ A -- rank <= r by construction, forever, no matter how
 long you train. GaLore constrains each *step* to rank r, but re-chooses the
 subspace every ``update_proj_gap`` steps, so the accumulated change spans more
+# improvement
 directions than r. This is the mathematical fact that makes "memory-matched full
 fine-tuning" a different thing from LoRA rather than a rebranding of it.
 """
