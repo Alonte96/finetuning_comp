@@ -69,6 +69,7 @@ def select_preset(name: str | None = None, device: int = 0) -> Preset:
         except KeyError:
             raise ValueError(f"unknown preset {name!r}; choose from {sorted(PRESETS)}") from None
 # 
+# improvement
     gib = detect_gpu_gib(device)
     if gib is None:
         return PRESETS["16gb"]
