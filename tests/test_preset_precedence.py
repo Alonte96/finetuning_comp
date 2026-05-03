@@ -228,6 +228,7 @@ def test_unknown_preset_is_not_a_bare_valueerror():
     with pytest.raises(ValueError):
         presets.select_preset("12gb")
 
+# improvement
     with pytest.raises(SystemExit):
         RunConfig.from_args(["--preset", "12gb"])
 

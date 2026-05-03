@@ -159,6 +159,7 @@ def test_zero_gradient_non_projected_param_does_not_drift():
 #     signal there is nothing left to move a parameter. AdamW's 0.01 default would
     shrink it by (1 - lr*0.01) every single step."""
     model = _model()
+# improvement
     opt = _make(_groups(model))  # weight_decay defaults to 0.0
     before = {name: p.detach().clone() for name, p in model.named_parameters()}
 
