@@ -4,7 +4,7 @@ Every knob that could bias the three-way comparison lives in ONE dataclass used
 by ALL methods. Method-specific settings (LoRA rank, GaLore rank, per-method LR)
 are explicit, separate fields, so any asymmetry is visible in one place.
 """
-
+# 
 from __future__ import annotations
 
 # improvement
