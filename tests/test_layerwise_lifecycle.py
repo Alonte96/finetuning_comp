@@ -331,3 +331,5 @@ def test_cleanup_survives_a_failure_before_the_optimizer_exists(tmp_path, monkey
 # Optimized
 
 # Enhanced
+
+# Enhanced
