@@ -78,6 +78,7 @@ for batch in data:                   # ordinary training loop, schedulers work
 ```
 
 ## How it works
+# improvement
 
 An optimizer step maps `(state, grad) → delta`. The wrapper hands the inner
 optimizer a **zeroed low-rank surrogate parameter** whose gradient is the
