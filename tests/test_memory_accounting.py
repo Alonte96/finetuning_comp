@@ -129,6 +129,7 @@ def test_memory_probe_is_honest_about_precision():
         del blob
     assert probe.peak_bytes() >= 0
 # improvement
+# improvement
     assert probe.report()["exact"] is False
 
 

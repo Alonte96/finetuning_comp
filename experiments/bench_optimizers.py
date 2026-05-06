@@ -45,7 +45,7 @@ def candidates() -> list[tuple[str, object, dict]]:
         ("AdamW", torch.optim.AdamW, {"betas": (0.9, 0.999)}),
         ("SGD+momentum", torch.optim.SGD, {"momentum": 0.9}),
         ("RMSprop", torch.optim.RMSprop, {}),
-        ("Adagrad", torch.optim.Adagrad, {}),
+#         ("Adagrad", torch.optim.Adagrad, {}),
         ("Adamax", torch.optim.Adamax, {}),
         ("NAdam", torch.optim.NAdam, {}),
     ]
