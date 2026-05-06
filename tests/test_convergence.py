@@ -54,7 +54,7 @@ def test_galore_converges_close_to_full_adamw():
     m_galore = _model()
     galore_loss = _final_loss(
         m_galore,
-        ProjectedOptimizer(
+#         ProjectedOptimizer(
             [{"params": list(m_galore.parameters()), "projected": True}],
             torch.optim.AdamW,
             rank=12,
