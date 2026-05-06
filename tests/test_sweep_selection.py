@@ -167,7 +167,7 @@ def test_passthrough_is_forwarded_verbatim_to_train(monkeypatch, tmp_path):
     fake = _install(monkeypatch, tmp_path, {lr: 1.0 + i for i, lr in enumerate(GALORE_GRID)})
 
     sweep_lr.run_sweep(["galore"], steps=3, smoke=True, passthrough=passthrough)
-
+# 
     assert len(fake.calls) == len(GALORE_GRID)
     for argv in fake.calls:
         assert _contains(argv, passthrough), argv

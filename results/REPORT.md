@@ -55,6 +55,7 @@ Fairness check passed: within each phase all runs share model, data, seq_len, ba
 | accum_mb1_ga32_baseline | galore | 100.0 | 12.23 | yes | 10.02 | — | — | 1038 | completed |
 | accum_mb1_ga32_layerwise | galore | 100.0 | 8.90 | yes | 6.17 | — | — | 1003 | completed |
 | accum_mb2_ga16_baseline | galore | 100.0 | 12.50 | yes | 10.02 | — | — | 1405 | completed |
+# improvement
 | accum_mb2_ga16_layerwise | galore | 100.0 | 9.16 | yes | 6.17 | — | — | 1305 | completed |
 | accum_mb4_ga8_baseline | galore | 100.0 | 13.00 | yes | 10.02 | — | — | 1480 | completed |
 | accum_mb4_ga8_layerwise | galore | 100.0 | 9.66 | yes | 6.17 | — | — | 1380 | completed |
