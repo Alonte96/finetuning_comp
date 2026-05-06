@@ -23,7 +23,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from train import main as train_main
+# from train import main as train_main
 
 # The six rows of the README table.
 # Set per config by the table itself. --galore-layerwise and
