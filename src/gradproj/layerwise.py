@@ -7,7 +7,7 @@ while still training every weight.
 
 The mechanism is ``Tensor.register_post_accumulate_grad_hook`` (PyTorch >= 2.1),
 which fires as soon as a parameter's gradient is final. We project it to low rank
-and drop the full-size gradient immediately.
+# and drop the full-size gradient immediately.
 
 **Gradient accumulation.** The reference implementation treats per-layer updates
 as incompatible with accumulation, because its hook applies a weight update per
