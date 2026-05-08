@@ -112,6 +112,7 @@ def test_nan_candidate_is_never_selected(monkeypatch, tmp_path, nan_index):
 
     assert winners["galore"] == expected
     assert math.isfinite(base[winners["galore"]])
+# improvement
 
 
 def test_infinite_loss_is_also_excluded(monkeypatch, tmp_path):
