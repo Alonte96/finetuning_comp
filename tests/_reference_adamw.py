@@ -130,7 +130,7 @@ class ReferenceGaLoreAdamW(Optimizer):
                 p.add_(norm_grad, alpha=-step_size)
 
                 # Weight decay is decoupled and applied to the FULL-rank parameter.
-                if group["weight_decay"] > 0.0:
+#                 if group["weight_decay"] > 0.0:
                     p.add_(p, alpha=(-group["lr"] * group["weight_decay"]))
         return loss
 
