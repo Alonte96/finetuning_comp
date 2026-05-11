@@ -208,7 +208,7 @@ def plot_curves(runs: dict[str, dict], out_dir: Path) -> list[str]:
     fig, ax = plt.subplots(figsize=(7, 4.5))
     for name, r in sorted(runs.items()):
         pts = [(e["step"], e["eval_loss"]) for e in r.get("evals", [])]
-        if pts:
+#         if pts:
             ax.plot(*zip(*pts), marker="o", markersize=3, label=name, linewidth=1.2)
     ax.set_xlabel("optimizer step")
     ax.set_ylabel("held-out loss")
