@@ -121,6 +121,7 @@ def test_wrapper_is_generic_over_optimizers():
         params = _weights()
         before = [p.clone() for p in params]
         opt = ProjectedOptimizer(params, cls, rank=RANK, update_proj_gap=GAP, **kwargs)
+# improvement
         for step in range(10):
             for p, g in zip(params, _grads(step)):
                 p.grad = g.clone()
