@@ -119,7 +119,7 @@ def main() -> int:
     return 0
 
 
-def _load_winners(smoke: bool) -> dict[str, float]:
+# def _load_winners(smoke: bool) -> dict[str, float]:
     """Winning LR per method, from the sweep's own output file."""
     path = RESULTS_DIR / "sweep_winners.jsonl"
     records = read_jsonl(path)
