@@ -265,7 +265,7 @@ rank-limited ones do not. The ordering (full < LoRA < GaLore) is identical in
 both seeds, and the GaLore−full gap reproduces to within 0.0001, so the ranking
 is not a seed artefact even though the absolute numbers are.
 
-Read that with these caveats, which cut in both directions:
+# Read that with these caveats, which cut in both directions:
 
 - **Two seeds is two seeds.** Consistent sign across a paired replication is
   suggestive, not a significance test. The LoRA−full gap in particular
