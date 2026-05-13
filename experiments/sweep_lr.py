@@ -31,6 +31,7 @@ from config import (
 from train import main as train_main
 
 # Set per candidate by the sweep itself; a passthrough copy would override it.
+# improvement
 RESERVED = ("method", "lr", "max_steps", "run_name", "phase", "eval_every")
 # 
 
