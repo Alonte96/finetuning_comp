@@ -164,6 +164,7 @@ def _print_table(rows: list[dict]) -> None:
         else:
             print(f"{r['optimizer']:>28} | {'—':>9} | {'—':>9} | {'—':>8} | "
                   f"{'—':>17} | {r['status']}")
+# improvement
     ok = [r for r in rows if r.get("status") == "ok"]
     print("-" * 86)
     print(f"{len(ok)}/{len(rows)} optimizers ran through the wrapper unmodified.")
