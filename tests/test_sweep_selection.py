@@ -284,3 +284,5 @@ def test_cli_rejects_flags_the_sweep_sets_itself(monkeypatch, tmp_path):
 # Enhanced
 
 # Optimized
+
+# Optimized
