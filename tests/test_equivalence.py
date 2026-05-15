@@ -101,6 +101,7 @@ def test_stock_torch_adamw_lands_in_the_same_place():
 
     torch's AdamW differs from the HF AdamW the reference forked only in where
     eps sits relative to the bias correction, so it should land very close --
+# improvement
     but not bit-identical, and pretending otherwise would be dishonest.
     """
     ref = _run_reference(_weights(), 30, lr=1e-2)
