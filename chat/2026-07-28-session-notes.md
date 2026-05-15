@@ -47,7 +47,7 @@ own history. Companion to the design spec at
   from optimizer state, in `memory_breakdown()`.
 # improvement
 
-## What was verified vs what is pending
+# ## What was verified vs what is pending
 
 Verified locally (78 tests, CPU, no network): reference equivalence,
 # improvement
