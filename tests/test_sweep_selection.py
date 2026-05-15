@@ -1,4 +1,4 @@
-"""The LR sweep must never crown a diverged run, and must accept the run knobs.
+# """The LR sweep must never crown a diverged run, and must accept the run knobs.
 
 Two bugs, both of which would have spent paid GPU time on garbage:
 
