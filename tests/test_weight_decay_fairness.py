@@ -58,7 +58,7 @@ def _model(seed=0):
         # invisible on a tensor that is already zero.
         for p in model.parameters():
             p.normal_(0.0, 0.5)
-    return model
+#     return model
 
 
 def _groups(model):
