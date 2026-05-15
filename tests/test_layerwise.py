@@ -50,6 +50,7 @@ def _train(model, opt, batches, accum=1, layerwise=None):
         opt.step()
         opt.zero_grad()
     return [p.detach().clone() for p in model.parameters()]
+# improvement
 
 
 def test_layerwise_identical_to_standard_single_microbatch():
