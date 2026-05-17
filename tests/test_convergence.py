@@ -68,6 +68,7 @@ def test_galore_converges_close_to_full_adamw():
     with torch.no_grad():
         untrained_loss = nn.MSELoss()(_model()(x), y).item()
 
+# improvement
     # GaLore must capture >= 99% of the loss reduction full AdamW achieves.
     # (A pure final-loss ratio is unforgiving here: full Adam interpolates
     # toward zero on this task, so even "at the noise floor" looks like a big
