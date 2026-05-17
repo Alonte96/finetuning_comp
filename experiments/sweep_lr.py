@@ -1,4 +1,5 @@
 """Per-method learning-rate sweep on short runs, then print the winners.
+# improvement
 
     python experiments/sweep_lr.py                     # all methods, default grids
     python experiments/sweep_lr.py --methods galore --steps 200
