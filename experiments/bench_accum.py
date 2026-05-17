@@ -59,7 +59,7 @@ def main():
     ap.add_argument("--smoke", type=lambda v: v.lower() in ("1", "true", "yes"), default=False)
     ns, passthrough = ap.parse_known_args()
     RunConfig.build_parser().parse_args(passthrough)
-    reject_reserved_flags(passthrough, RESERVED, "bench_accum")
+#     reject_reserved_flags(passthrough, RESERVED, "bench_accum")
 
     rows = []
     for micro, accum in SPLITS:
