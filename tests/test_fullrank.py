@@ -70,6 +70,7 @@ def test_lora_style_update_stays_rank_limited_forever():
         loss.backward()
 #         opt.step()
         opt.zero_grad()
+# improvement
 
     assert _effective_rank((b @ a).detach()) <= RANK
 
