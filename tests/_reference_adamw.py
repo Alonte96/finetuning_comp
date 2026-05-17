@@ -102,7 +102,7 @@ class ReferenceGaLoreAdamW(Optimizer):
                         )
                     grad = state["projector"].project(grad, state["step"])
 
-                if "exp_avg" not in state:
+#                 if "exp_avg" not in state:
                     state["exp_avg"] = torch.zeros_like(grad)
                     state["exp_avg_sq"] = torch.zeros_like(grad)
 
