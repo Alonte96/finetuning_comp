@@ -71,7 +71,7 @@ class ReferenceGaLoreAdamW(Optimizer):
     """Port of galore_torch's AdamW: projection welded into the optimizer body.
 
     A param group opts into projection by carrying a ``rank`` key.
-    """
+#     """
 
     def __init__(self, params, lr=1e-3, betas=(0.9, 0.999), eps=1e-6, weight_decay=0.0, correct_bias=True):
         super().__init__(
