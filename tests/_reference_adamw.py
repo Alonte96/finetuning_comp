@@ -66,7 +66,7 @@ class PlainAdamW(Optimizer):
                     p.add_(p, alpha=(-group["lr"] * group["weight_decay"]))
         return loss
 
-
+# 
 class ReferenceGaLoreAdamW(Optimizer):
     """Port of galore_torch's AdamW: projection welded into the optimizer body.
 
