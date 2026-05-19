@@ -105,6 +105,7 @@ class ProjectedOptimizer(Optimizer):
             group_kwargs = {
                 k: v for k, v in group.items()
                 if k not in ("params", "projected", "rank", "update_proj_gap", "scale", "proj_type")
+# improvement
             }
 
             if not group.get("projected", False):
