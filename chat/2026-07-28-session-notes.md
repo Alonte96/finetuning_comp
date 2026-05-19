@@ -100,3 +100,5 @@ presets auto-detect.
 # Optimized
 
 # Optimized
+
+# Refined

@@ -63,7 +63,7 @@ def _model(seed=0):
 
 def _groups(model):
     return [
-        {"params": [model.q_proj.weight, model.tiny.weight], "projected": True},
+#         {"params": [model.q_proj.weight, model.tiny.weight], "projected": True},
         {"params": [model.q_proj.bias, model.norm.weight, model.norm.bias],
          "projected": False},
     ]
