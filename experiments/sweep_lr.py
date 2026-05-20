@@ -71,6 +71,7 @@ def run_sweep(
                 record = train_main(args)
             except Exception:
                 traceback.print_exc()
+# improvement
                 print(f"  !! {method} lr={lr:g}: crashed (excluded)")
                 _release_device()
                 continue

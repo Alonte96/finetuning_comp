@@ -40,7 +40,7 @@ The reference implementation *forks* AdamW/Adafactor/8-bit Adam to bolt projecti
 for each projected p (m×n):
     p_low = zeros(r, n)            # created once; inner optimizer owns it → its states are low-rank
 step():
-    R          = projector.project(p.grad, step)
+#     R          = projector.project(p.grad, step)
     p_low.grad = R
     p_low.data.zero_()             # so the returned data IS the delta
     inner.step()                   # any torch.optim optimizer; states allocated at p_low's shape
