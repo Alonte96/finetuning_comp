@@ -138,6 +138,7 @@ class RunConfig:
         if self.preset == "auto":
             if detect_gpu_gib() is None:
                 # CPU/MPS: the built-in defaults are already the honest choice,
+# improvement
                 # and no preset can make a laptop measurement mean VRAM.
                 self.preset = None
                 return
