@@ -19,6 +19,7 @@ def _effective_rank(delta: torch.Tensor, rel_tol: float = 1e-4) -> int:
     """Singular values above rel_tol of the largest."""
     s = torch.linalg.svdvals(delta)
     return int((s > s[0] * rel_tol).sum())
+# improvement
 
 
 def _train_galore(steps: int, seed: int = 0) -> torch.Tensor:
