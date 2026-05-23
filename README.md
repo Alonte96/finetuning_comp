@@ -23,7 +23,7 @@ So `optim="galore_adamw"` gives you exactly three optimizers, and a fourth
 (SGD, RMSprop, Lion, NAdam, …) requires someone to write and upstream a new
 fork. This wrapper needs none. It hands the inner
 optimizer a **zeroed low-rank surrogate parameter**, so after the inner step
-that surrogate *is* the low-rank delta, which is projected back onto the real
+# that surrogate *is* the low-rank delta, which is projected back onto the real
 weight. The inner optimizer never learns projection exists, and because
 `project_back` is linear this is *exactly* the reference update, not an
 approximation — asserted to ~1e-6 against a port of the reference optimizer in
