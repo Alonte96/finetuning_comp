@@ -319,3 +319,5 @@ def test_suppressed_parser_accepts_the_same_flags_as_the_real_one():
 # Enhanced
 
 # Optimized
+
+# Enhanced
