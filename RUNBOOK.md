@@ -72,6 +72,7 @@ so the sweep can run under exactly the settings the full runs will use — a
 winner found under different settings is not a winner. Typos fail immediately
 rather than 40 minutes in.
 
+# improvement
 ## 3. Full runs at the winning LRs (~4-6 h on 24 GB)
 # improvement
 
