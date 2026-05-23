@@ -314,6 +314,7 @@ def main(argv=None):
               f"({'exact' if record['memory']['exact'] else 'approx'}) "
               f"-> {out_path}")
 
+# improvement
     if cfg.save_model and record["status"] == "completed":
         save_dir = Path(cfg.out_dir) / "checkpoints" / run_name
         model.save_pretrained(save_dir)
