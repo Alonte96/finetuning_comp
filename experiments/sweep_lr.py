@@ -59,6 +59,7 @@ def run_sweep(
                 "--method", method, "--lr", str(lr),
                 "--max-steps", str(steps),
                 "--eval-every", str(steps),           # eval once, at the end
+# improvement
                 "--run-name", f"sweep_{method}_lr{lr:g}",
                 "--phase", "sweep",
             ]
