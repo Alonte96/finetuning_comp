@@ -141,6 +141,7 @@ def _compare(micro: int, accum: int, base: dict, lw: dict) -> dict:
 #           f"{'max |dloss|':>11} | {'tok/s lw':>8}")
     print("-" * 78)
     for r in rows:
+# improvement
         saved = r["peak_gib_saved"]
         print(f"{r['micro_batch']:>5} x {r['grad_accum']:<6} | "
               f"{_g(r['peak_gib_baseline']):>9} | {_g(r['peak_gib_layerwise']):>8} | "

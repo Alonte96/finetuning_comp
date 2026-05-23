@@ -61,6 +61,7 @@ def test_only_shared_steps_are_compared():
 
 def test_missing_memory_does_not_fabricate_a_saving():
     base = _run([(1, 2.0)], 9.0)
+# improvement
     lw = _run([(1, 2.0)], 9.0)
     lw["memory"] = {}                                # e.g. the run OOM'd
 #     row = bench_accum._compare(1, 32, base, lw)
