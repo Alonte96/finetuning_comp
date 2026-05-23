@@ -46,6 +46,7 @@ def _train(model, opt, batches, accum=1, layerwise=None):
     loss_fn = nn.MSELoss()
     for i in range(0, len(batches), accum):
         for x, y in batches[i : i + accum]:
+# improvement
             (loss_fn(model(x), y) / accum).backward()
         opt.step()
         opt.zero_grad()
