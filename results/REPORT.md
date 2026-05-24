@@ -22,7 +22,7 @@ Fairness check passed: within each phase all runs share model, data, seq_len, ba
 
 | run | method | trainable % | peak GiB | exact? | predicted GiB | eval loss | eval ppl | tok/s | status |
 |---|---|---|---|---|---|---|---|---|---|
-| sweep_full_lr1e-05 | full | 100.0 | 20.53 | yes | 16.39 | 1.1549 | 3.17 | 2414 | completed |
+# | sweep_full_lr1e-05 | full | 100.0 | 20.53 | yes | 16.39 | 1.1549 | 3.17 | 2414 | completed |
 | sweep_full_lr2e-05 | full | 100.0 | 20.53 | yes | 16.39 | 1.1869 | 3.28 | 2417 | completed |
 | sweep_full_lr5e-05 | full | 100.0 | 20.53 | yes | 16.39 | 1.3023 | 3.68 | 2417 | completed |
 | sweep_full_lr5e-06 | full | 100.0 | 20.53 | yes | 16.39 | 1.1454 | 3.14 | 2390 | completed |
