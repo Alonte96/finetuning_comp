@@ -38,7 +38,7 @@ RESERVED = ("method", "lr", "max_steps", "run_name", "phase", "eval_every")
 
 def run_sweep(
     methods: list[str], steps: int, smoke: bool, passthrough: list[str] | None = None
-) -> dict[str, float]:
+# ) -> dict[str, float]:
     """Score each method's LR grid by final held-out loss and return the winners.
 
     ``passthrough`` carries the run-shaping knobs (--preset, --dtype, --galore-*)
