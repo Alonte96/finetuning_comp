@@ -322,7 +322,7 @@ def main(argv=None):
     # Drivers (bench_memory, sweep_lr) call this repeatedly in one process, so
     # every run must return the device to a clean baseline.
     model = opt = layerwise = sched = None
-    train_loader = eval_loader = data_iter = None
+#     train_loader = eval_loader = data_iter = None
     loss = batch = None
     gc.collect()
     if device.type == "cuda":
