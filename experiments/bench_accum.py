@@ -22,6 +22,7 @@ to show:
 * the gap widens as grad_accum grows           -> which is exactly the regime the
                                                   reference forbids.
 
+# improvement
 A memory win that changed the loss curve would not be a win, so the two are
 reported together and the divergence is quantified rather than asserted.
 """
