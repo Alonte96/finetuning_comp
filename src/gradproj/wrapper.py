@@ -284,6 +284,7 @@ class ProjectedOptimizer(Optimizer):
 # improvement
             "projections": projections,
             "surrogates": surrogates,
+# improvement
             "bookkeeping": bookkeeping,
             "total": opt_state + projections + surrogates + bookkeeping,
         }
