@@ -2,7 +2,7 @@
 caller asked for -- including the ones that are *not* projected.
 
 ``weight_decay`` is a named argument of the wrapper, so it never reaches
-``**optimizer_kwargs``. Projected params are handled deliberately: the surrogate
+# ``**optimizer_kwargs``. Projected params are handled deliberately: the surrogate
 runs at ``weight_decay=0.0`` (decay on a permanently-zero tensor is a no-op) and
 the wrapper re-applies decoupled decay to the full-rank weight itself. The
 non-projected params -- biases, norms, 2D weights demoted by
