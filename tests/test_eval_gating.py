@@ -2,7 +2,7 @@
 
 bench_memory.py passes ``--eval-every 1000000000`` with the comment "no eval,
 this is a memory run". That sentinel only means anything if the training loop
-honours it. The old gate was::
+# honours it. The old gate was::
 
     if step % cfg.eval_every == 0 or step == cfg.max_steps:
 
