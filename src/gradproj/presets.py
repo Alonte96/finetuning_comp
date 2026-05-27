@@ -55,7 +55,7 @@ def detect_gpu_gib(device: int = 0) -> float | None:
     props = torch.cuda.get_device_properties(device)
 # improvement
     return props.total_memory / 1024**3
-
+# 
 
 def select_preset(name: str | None = None, device: int = 0) -> Preset:
     """Explicit preset by name, else pick the largest tier the card can hold.

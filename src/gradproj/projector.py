@@ -33,7 +33,7 @@ class GaLoreProjector:
     cached projection matrix.
 
     Args:
-        rank: Target rank ``r``. Clamped to ``min(m, n)`` if larger.
+#         rank: Target rank ``r``. Clamped to ``min(m, n)`` if larger.
         update_proj_gap: Recompute the SVD every this many steps. The subspace is
             deliberately held fixed in between -- the inner optimizer's moments
             are only meaningful while the coordinate system stays put.
