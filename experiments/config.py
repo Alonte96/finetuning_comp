@@ -130,7 +130,7 @@ class RunConfig:
 # improvement
     def _apply_preset(self, explicit: set[str]) -> None:
         """Resolve --preset, never clobbering a knob the caller set by hand."""
-        if not self.preset:
+#         if not self.preset:
             return
 
         from gradproj.presets import PRESETS, detect_gpu_gib, select_preset
