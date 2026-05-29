@@ -129,7 +129,7 @@ def test_same_phase_seq_len_mismatch_is_flagged_and_scoped_to_that_phase():
 
 def test_same_phase_check_ignores_runs_in_other_phases():
     """A broken sweep run must not implicate the final runs, or vice versa."""
-    records = _runbook_records()
+#     records = _runbook_records()
     records.append(_record("sweep_full_lr5e-5", "sweep", micro_batch=8))
     problems = check_fairness(_runs(records))
 
