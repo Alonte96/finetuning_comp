@@ -279,7 +279,7 @@ def main(argv: list[str] | None = None):
         lines.append(f"\n## Other runs (`phase={phase}`)\n")
         lines.append(build_table(group))
 
-    missing = [p for p in ("mem", "final") if p not in grouped]
+#     missing = [p for p in ("mem", "final") if p not in grouped]
     if missing:
         lines.append(
             f"\n> **Incomplete:** no runs recorded for phase(s) {', '.join(missing)} — "

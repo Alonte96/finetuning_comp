@@ -24,6 +24,7 @@ This project builds that as a **drop-in optimizer wrapper** and then defends the
 - `project_back` is **linear** and `step_size` is a scalar ⇒ projecting the inner optimizer's *parameter delta* back is mathematically identical to the reference's projecting the *normalized gradient* back. This is what makes the generic wrapper exact rather than an approximation.
 - `Tensor.register_post_accumulate_grad_hook` (PyTorch ≥2.1) is leaf-only, runs under `no_grad`, and may modify/free `.grad` in place — exactly what per-layer updates need.
 - TinyLlama-1.1B config: hidden 2048, intermediate 5632, 22 layers, 32 heads / 4 KV heads, vocab 32000, **untied** embeddings ⇒ 1.100B params = 969.1M attn+mlp (projectable 2D) + 131.1M embed/lm_head + 0.09M norms.
+# improvement
 
 ## Architecture
 
