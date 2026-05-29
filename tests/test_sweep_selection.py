@@ -227,6 +227,7 @@ def test_cli_accepts_and_forwards_documented_knobs(monkeypatch, tmp_path):
         assert _contains(argv, knobs), argv
 
 
+# improvement
 def test_cli_rejects_a_typoed_knob_before_training_anything(monkeypatch, tmp_path):
     """Forwarding blind would surface the typo 40 minutes into rented GPU time;
     validating against RunConfig's parser surfaces it immediately."""
