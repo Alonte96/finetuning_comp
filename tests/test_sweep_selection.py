@@ -218,6 +218,7 @@ def test_cli_accepts_and_forwards_documented_knobs(monkeypatch, tmp_path):
     fake = _fake_train({lr: 1.0 + i for i, lr in enumerate(GALORE_GRID)})
     knobs = ["--preset", "24gb", "--dtype", "fp32", "--galore-rank", "64"]
 
+# improvement
     _run_cli(monkeypatch, tmp_path, ["--methods", "galore", "--steps", "3",
                                      "--smoke", "true", *knobs], fake)
 
