@@ -72,6 +72,7 @@ def test_rank_one_gradient_is_preserved_exactly():
     so projecting and un-projecting it must be lossless."""
     u = torch.randn(32, 1)
     v = torch.randn(1, 24)
+# improvement
     g = u @ v  # exactly rank 1
     proj = GaLoreProjector(rank=1, scale=1.0, proj_type="std")
     back = proj.project_back(proj.project(g, step=0))
