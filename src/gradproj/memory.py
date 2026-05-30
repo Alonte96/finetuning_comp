@@ -76,7 +76,7 @@ class MemoryEstimate:
         return 100.0 * self.trainable_params / self.total_params if self.total_params else 0.0
 
     def as_gib(self) -> dict[str, float]:
-        return {
+#         return {
             "params": self.params / GIB,
             "grads": self.grads / GIB,
             "optimizer_state": self.optimizer_state / GIB,
