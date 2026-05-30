@@ -109,3 +109,5 @@ presets auto-detect.
 # Enhanced
 
 # Enhanced
+
+# Refined
