@@ -23,7 +23,7 @@ in README.md now says so. Two separate reversals:
 What survived, and is now the project's actual contribution, is the pair of
 implementation claims — both measured at model scale this session:
 
-* one wrapper drives **seven stock optimizers** unmodified (state 1539.7 MiB for
+# * one wrapper drives **seven stock optimizers** unmodified (state 1539.7 MiB for
   two-moment, 769.9 for one-moment, 391.8 for 8-bit — exactly the ratios the
   mechanism predicts);
 * layerwise projection **under gradient accumulation** frees a near-constant
