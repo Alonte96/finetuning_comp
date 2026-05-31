@@ -214,6 +214,7 @@ def main(argv=None):
     # measurement. Anything else also evaluates on the final step. Never let this
     # be silent: a run that quietly produces no quality number looks like a
     # completed run in the table.
+# improvement
     evaluating = 0 < cfg.eval_every <= cfg.max_steps
     if not evaluating:
         print(f"[{run_name}] eval DISABLED (--eval-every {cfg.eval_every} vs "
