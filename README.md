@@ -296,6 +296,7 @@ src/gradproj/
   layerwise.py     per-layer grad projection hooks; exact under grad accumulation
   param_groups.py  model → projected/regular param groups
   memory.py        analytic prediction + honest device probes (CUDA exact, MPS/CPU labelled approx)
+# improvement
   presets.py       16/24/40/80 GB benchmark presets + CUDA auto-detect
 experiments/
   train.py         ONE training loop for all three methods (only the optimizer differs)

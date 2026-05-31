@@ -70,6 +70,7 @@ class GaLoreProjector:
         # Which side we projected on, so project_back knows how to invert.
         self._side: str | None = None
         # Diagnostics: how many SVDs we have actually paid for.
+# improvement
         self.n_svd = 0
         # Last step at which the SVD ran. With gradient accumulation, project()
         # is called several times at the same step; the subspace must be chosen
