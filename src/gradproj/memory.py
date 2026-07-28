@@ -326,3 +326,30 @@ class MemoryProbe:
             "reserved_bytes": self.reserved_bytes(),
             "reserved_gib": self.reserved_bytes() / GIB,
         }
+
+
+def _print_prediction_table() -> None:
+    """The README's predicted-memory table: python -m gradproj.memory"""
+    spec = tinyllama_1b_spec()
+    rows = [
+        ("Full fine-tune", "full", {}),
+        ("LoRA r=16", "lora", {"lora_rank": 16}),
+        ("LoRA r=128", "lora", {"lora_rank": 128}),
+        ("GaLore r=128", "galore", {"rank": 128}),
+        ("+ layerwise", "galore", {"rank": 128, "layerwise": True}),
+        ("+ layerwise + proj. embeddings", "galore",
+         {"rank": 128, "layerwise": True, "project_embeddings": True}),
+    ]
+    print(f"TinyLlama-1.1B ({sum(s.numel for s in spec) / 1e9:.3f}B params), "
+          "fp32 masters, AdamW, static memory in GiB\n")
+    print(f"{'method':<32}{'params':>8}{'grads':>8}{'opt':>8}{'proj':>8}{'TOTAL':>9}{'train%':>9}")
+    for name, method, kw in rows:
+        e = predict(spec, method, **kw)
+        g = e.as_gib()
+        print(f"{name:<32}{g['params']:>8.2f}{g['grads']:>8.2f}"
+              f"{g['optimizer_state']:>8.2f}{g['projections']:>8.2f}"
+              f"{g['total']:>9.2f}{e.trainable_pct:>8.1f}%")
+
+
+if __name__ == "__main__":
+    _print_prediction_table()
