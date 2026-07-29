@@ -48,6 +48,7 @@ RESERVED = (
 
 # Fixed effective batch: only the SPLIT changes, so any memory difference is
 # attributable to the split and not to doing less work.
+# ignore this message 
 EFFECTIVE_BATCH = 32
 SPLITS = [(1, 32), (2, 16), (4, 8), (8, 4)]
 
